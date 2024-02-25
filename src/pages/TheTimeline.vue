@@ -1,14 +1,14 @@
 <template>
   <div class="mt-5">
     <ul class="p-0">
-      <TimelineItem v-for="timelineItem in timelineItems" :key="timelineItem.hour" :timelineItem="timelineItem" />
+      <TimelineItem v-for="timelineItem in store.timelineItems" :key="timelineItem.hour" :timelineItem="timelineItem" />
     </ul>
   </div>
 </template>
 
 <script setup>
-import { generateTimelineItems } from '../functions.js'
 import TimelineItem from '../components/TimelineItem.vue'
+import { useTimelineStore } from '../stores/index.js'
 
-const timelineItems = generateTimelineItems()
+const store = useTimelineStore()
 </script>
