@@ -11,7 +11,12 @@
 <script setup>
 import BaseSelect from './BaseSelect.vue'
 
-const props = defineProps(['timelineItem'])
+const props = defineProps({
+  timelineItem: {
+    required: true,
+    type: Object
+  }
+})
 
 const hourLinkClasses = [
     'hours rounded px-2 font-monospace fs-1',
