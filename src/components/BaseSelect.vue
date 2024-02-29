@@ -7,7 +7,7 @@
         class="ms-2 form-select text-truncate bg-gray-100 fs-3"
         @change="$emit('select', +$event.target.value)"
     >
-      <option disabled value="">{{ placeholder }}</option>
+      <option :selected="isNotSelected" disabled value="">{{ placeholder }}</option>
       <option v-for="{ value, label } in options" :key="value" :value="value" :selected="value === selected">
         {{ label }}
       </option>
@@ -18,9 +18,10 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline/index.js'
-import { isSelectOptionsValid } from '../validators.js'
+import { isNumberOrNull, isSelectOptionsValid, isUndefinedOrNull } from '../validators.js'
+import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
   selected: Number,
   options: {
     required: true,
@@ -34,6 +35,8 @@ defineProps({
 })
 
 defineEmits({
-  select: value => typeof value === 'number'
+  select: isNumberOrNull
 })
+
+const isNotSelected = computed(() => isUndefinedOrNull(props.selected))
 </script>
