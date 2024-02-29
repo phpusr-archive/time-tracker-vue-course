@@ -1,9 +1,12 @@
 <template>
   <div class="d-flex">
-    <BaseButton>
+    <BaseButton @click="$emit('select', null)">
       <XMarkIcon />
     </BaseButton>
-    <select class="ms-2 form-select text-truncate bg-gray-100 fs-3">
+    <select
+        class="ms-2 form-select text-truncate bg-gray-100 fs-3"
+        @change="$emit('select', +$event.target.value)"
+    >
       <option disabled value="">{{ placeholder }}</option>
       <option v-for="{ value, label } in options" :key="value" :value="value" :selected="value === selected">
         {{ label }}
@@ -28,5 +31,9 @@ defineProps({
     required: true,
     type: String
   }
+})
+
+defineEmits({
+  select: value => typeof value === 'number'
 })
 </script>
