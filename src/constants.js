@@ -9,4 +9,4 @@ export const NAV_ITEMS = [
   { title: 'Activities', action: PAGE_ACTIVITIES, icon: ListBulletIcon },
   { title: 'Progress', action: PAGE_PROGRESS, icon: ChartBarIcon }
 ]
-
+export const HOURS_IN_DAY = 24
