@@ -1,11 +1,11 @@
-import { HOURS_IN_DAY } from './constants.js'
+import { MAX_HOUR, MIN_HOUR } from './constants.js'
 
-export function isSelectOptionValid(options) {
+export function isSelectOptionsValid(options) {
   return options.every(({ value, label }) =>
     typeof value === 'number' && typeof label === 'string'
   )
 }
 
 export function isTimelineItemValid({ hour }) {
-  return typeof hour === 'number' && hour >= 0 && hour < HOURS_IN_DAY
+  return typeof hour === 'number' && hour >= MIN_HOUR && hour <= MAX_HOUR
 }
