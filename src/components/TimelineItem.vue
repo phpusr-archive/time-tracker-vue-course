@@ -13,6 +13,7 @@ import BaseSelect from './BaseSelect.vue'
 import { isTimelineItemValid } from '../validators.js'
 import { ref } from 'vue'
 import TimelineHour from './TimelineHour.vue'
+import { useAppStore } from '../stores/index.js'
 
 defineProps({
   timelineItem: {
@@ -22,13 +23,10 @@ defineProps({
   }
 })
 
-const options = [
-  { value: 1, label: 'Coding' },
-  { value: 2, label: 'Reading' },
-  { value: 3, label: 'Training' }
-]
+const store = useAppStore()
+const options = store.activitySelectOptions
 
-const selectedActivityId = ref(1)
+const selectedActivityId = ref(0)
 </script>
 
 <style scoped>

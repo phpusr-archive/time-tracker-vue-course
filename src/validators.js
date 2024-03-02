@@ -2,7 +2,7 @@ import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR } from './constants.js'
 
 export function isSelectOptionsValid(options) {
   return options.every(({ value, label }) =>
-    isNumber(value) && isString(label)
+    isNumber(value) && isNotEmptyString(label)
   )
 }
 
