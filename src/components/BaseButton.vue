@@ -4,9 +4,17 @@
   </button>
 </template>
 
+<script>
+import { DANGER_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE } from '../constants.js'
+
+const typeClasses = {
+  [NEUTRAL_BUTTON_TYPE]: 'btn-neutral',
+  [DANGER_BUTTON_TYPE]: 'btn-danger'
+}
+</script>
+
 <script setup>
 import { isButtonTypeValid } from '../validators.js'
-import { DANGER_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE } from '../constants.js'
 
 const props = defineProps({
   type: {
@@ -15,11 +23,6 @@ const props = defineProps({
     validator: isButtonTypeValid
   }
 })
-
-const typeClasses = {
-  [NEUTRAL_BUTTON_TYPE]: 'btn-neutral',
-  [DANGER_BUTTON_TYPE]: 'btn-danger'
-}
 
 const classes = 'btn ' + typeClasses[props.type]
 </script>
