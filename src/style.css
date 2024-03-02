@@ -2,9 +2,15 @@ a {
     text-decoration: none;
     color: black;
 }
+
 .bg-gray-100 {
     background: #e1e1e1;
 }
+
 .bg-purple-900 {
     background: #9314ab;
+}
+
+.divide-y:not(:last-child) {
+    border-bottom: 1px solid #e3e3e3;
 }

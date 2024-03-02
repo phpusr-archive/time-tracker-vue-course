@@ -6,7 +6,8 @@
 
 <style scoped>
 .btn-default {
-  width: 60px;
+  min-width: 60px;
+  height: 52px;
 }
 .btn-default:enabled:hover {
   background: #d1d1d1;
