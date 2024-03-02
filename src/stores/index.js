@@ -8,12 +8,17 @@ export const useAppStore = defineStore('app', {
   state: () => {
     return {
       timelineItems: generateTimelineItems(),
-      activities,
-      activitySelectOptions: generateActivitySelectOptions()
+      activities
+    }
+  },
+  getters: {
+    activitySelectOptions: (state) => {
+      return state.activities.map((label, value) => ({ label, value }))
+    }
+  },
+  actions: {
+    deleteActivity(activity) {
+      this.activities = this.activities.filter(it => it !== activity)
     }
   }
 })
-
-function generateActivitySelectOptions() {
-  return activities.map((label, value) => ({ label, value }))
-}

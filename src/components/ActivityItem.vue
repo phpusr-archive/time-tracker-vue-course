@@ -1,7 +1,7 @@
 <template>
   <li class="d-flex flex-column p-3 divide-y">
     <div class="d-flex align-items-center">
-      <BaseButton :type="DANGER_BUTTON_TYPE">
+      <BaseButton :type="DANGER_BUTTON_TYPE" @click="store.deleteActivity(activity)">
         <TrashIcon />
       </BaseButton>
       <div class="ms-2 text-truncate fs-3">{{ activity }}</div>
@@ -24,6 +24,7 @@ import BaseSelect from './BaseSelect.vue'
 import { ref } from 'vue'
 import { isActivityValid } from '../validators.js'
 import { DANGER_BUTTON_TYPE } from '../constants.js'
+import { useAppStore } from '../stores/index.js'
 
 defineProps({
   activity: {
@@ -36,4 +37,6 @@ defineProps({
 const periodSelectOptions = [15, 30, 45].map(it => ({ label: `0:${it}`, value: it }))
 
 const secondsToComplete = ref(null)
+
+const store = useAppStore()
 </script>
