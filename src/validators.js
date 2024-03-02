@@ -1,4 +1,4 @@
-import { MAX_HOUR, MIN_HOUR } from './constants.js'
+import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR } from './constants.js'
 
 export function isSelectOptionsValid(options) {
   return options.every(({ value, label }) =>
@@ -16,6 +16,10 @@ export function isHourValid(hour) {
 
 export function isActivityValid(activity) {
   return isNotEmptyString(activity)
+}
+
+export function isButtonTypeValid(value) {
+  return BUTTON_TYPES.includes(value)
 }
 
 // General validators

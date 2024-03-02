@@ -1,7 +1,7 @@
 <template>
   <li class="d-flex flex-column p-3 divide-y">
     <div class="d-flex align-items-center">
-      <BaseButton>
+      <BaseButton :type="DANGER_BUTTON_TYPE">
         <TrashIcon />
       </BaseButton>
       <div class="ms-2 text-truncate fs-3">{{ activity }}</div>
@@ -22,7 +22,8 @@ import { TrashIcon } from '@heroicons/vue/24/outline/index.js'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import { ref } from 'vue'
-import { isActivityValid, isNotEmptyString } from '../validators.js'
+import { isActivityValid } from '../validators.js'
+import { DANGER_BUTTON_TYPE } from '../constants.js'
 
 defineProps({
   activity: {
