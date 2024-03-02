@@ -22,11 +22,13 @@ import { TrashIcon } from '@heroicons/vue/24/outline/index.js'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import { ref } from 'vue'
+import { isActivityValid, isNotEmptyString } from '../validators.js'
 
 defineProps({
   activity: {
     type: String,
-    required: true
+    required: true,
+    validator: isActivityValid
   }
 })
 

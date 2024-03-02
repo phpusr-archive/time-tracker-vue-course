@@ -14,6 +14,10 @@ export function isHourValid(hour) {
   return isBetween(hour, MIN_HOUR, MAX_HOUR)
 }
 
+export function isActivityValid(activity) {
+  return isNotEmptyString(activity)
+}
+
 // General validators
 
 export function isNumberOrNull(value) {
@@ -26,6 +30,10 @@ export function isBetween(value, min, max) {
 
 export function isNumber(value) {
   return typeof value === 'number'
+}
+
+export function isNotEmptyString(value) {
+  return isString(value) && value.length > 0
 }
 
 export function isString(value) {

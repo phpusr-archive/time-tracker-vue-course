@@ -8,7 +8,7 @@
 
 <script setup>
 import TimelineItem from '../components/TimelineItem.vue'
-import { useTimelineStore } from '../stores/index.js'
+import { useAppStore } from '../stores/index.js'
 
-const store = useTimelineStore()
+const store = useAppStore()
 </script>
