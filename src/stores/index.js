@@ -17,6 +17,9 @@ export const useAppStore = defineStore('app', {
     }
   },
   actions: {
+    addActivity(activity) {
+      this.activities.push(activity)
+    },
     deleteActivity(activity) {
       this.activities = this.activities.filter(it => it !== activity)
     }
