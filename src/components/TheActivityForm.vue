@@ -1,7 +1,12 @@
 <template>
-  <form class="sticky-bottom d-flex p-3" @submit.prevent="store.addActivity(activity)">
-    <input type="text" class="form-control me-2" placeholder="Activity name" v-model="activity">
-    <BaseButton>
+  <form class="sticky-bottom d-flex p-3" @submit.prevent="submit()">
+    <input
+        type="text"
+        class="form-control me-2"
+        placeholder="Activity name"
+        v-model="activity"
+    >
+    <BaseButton :disabled="!activity.trim()">
       <PlusIcon />
     </BaseButton>
   </form>
@@ -15,4 +20,9 @@ import { useAppStore } from '../stores/index.js'
 const store = useAppStore()
 
 const activity = ref('')
+
+function submit() {
+  store.addActivity(activity.value)
+  activity.value = ''
+}
 </script>
