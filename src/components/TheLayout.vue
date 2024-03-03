@@ -1,7 +1,7 @@
 <template>
   <the-header />
 
-  <main class="flex-grow-1">
+  <main class="d-flex flex-column flex-grow-1">
     <RouterView />
   </main>
 
@@ -10,6 +10,5 @@
 <script setup lang="ts">
 import TheHeader from './TheHeader.vue'
 import TheNav from './TheNav.vue'
-
 </script>
 

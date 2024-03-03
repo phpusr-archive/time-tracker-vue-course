@@ -1,5 +1,5 @@
 <template>
-  <form class="sticky-bottom d-flex p-3" @submit.prevent="submit()">
+  <form class="sticky-bottom d-flex p-3 border-top" @submit.prevent="submit()">
     <input
         type="text"
         class="form-control me-2"
