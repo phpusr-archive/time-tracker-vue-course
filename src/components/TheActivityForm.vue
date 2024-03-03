@@ -12,7 +12,7 @@
   </form>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { PlusIcon } from '@heroicons/vue/24/outline/index.js'
 import BaseButton from './BaseButton.vue'
 import { useAppStore } from '../stores/index.js'
@@ -21,8 +21,10 @@ const store = useAppStore()
 
 const activity = ref('')
 
-function submit() {
+async function submit() {
   store.addActivity(activity.value)
   activity.value = ''
+  await nextTick()
+  window.scrollTo(0, document.body.scrollHeight)
 }
 </script>
