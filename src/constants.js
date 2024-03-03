@@ -12,6 +12,7 @@ export const NAV_ITEMS = [
 export const MIN_HOUR = 0
 export const MAX_HOUR = 23
 
+export const PRIMARY_BUTTON_TYPE = 'primary'
 export const NEUTRAL_BUTTON_TYPE = 'neutral'
 export const DANGER_BUTTON_TYPE = 'danger'
-export const BUTTON_TYPES = [NEUTRAL_BUTTON_TYPE, DANGER_BUTTON_TYPE]
+export const BUTTON_TYPES = [PRIMARY_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE, DANGER_BUTTON_TYPE]

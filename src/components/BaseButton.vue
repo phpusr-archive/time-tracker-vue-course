@@ -5,9 +5,10 @@
 </template>
 
 <script>
-import { DANGER_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE } from '../constants.js'
+import { DANGER_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE, PRIMARY_BUTTON_TYPE } from '../constants.js'
 
 const typeClasses = {
+  [PRIMARY_BUTTON_TYPE]: 'btn-primary',
   [NEUTRAL_BUTTON_TYPE]: 'btn-neutral',
   [DANGER_BUTTON_TYPE]: 'btn-danger'
 }
@@ -15,11 +16,12 @@ const typeClasses = {
 
 <script setup>
 import { isButtonTypeValid } from '../validators.js'
+import { PRIMARY_BUTTON_TYPE } from '../constants.js'
 
 const props = defineProps({
   type: {
     type: String,
-    default: 'neutral',
+    default: PRIMARY_BUTTON_TYPE,
     validator: isButtonTypeValid
   }
 })
@@ -31,6 +33,10 @@ const classes = 'btn ' + typeClasses[props.type]
 .btn {
   min-width: 60px;
   height: 52px;
+}
+.btn-primary {
+  background: #b236c3;
+  border-color: #b236c3;
 }
 .btn-neutral {
   background: #e1e1e1;

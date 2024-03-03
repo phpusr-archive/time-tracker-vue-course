@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-    <BaseButton @click="$emit('select', null)">
+    <BaseButton :type="NEUTRAL_BUTTON_TYPE" @click="$emit('select', null)">
       <XMarkIcon />
     </BaseButton>
     <select
@@ -20,6 +20,7 @@ import BaseButton from './BaseButton.vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline/index.js'
 import { isNumberOrNull, isSelectOptionsValid, isUndefinedOrNull } from '../validators.js'
 import { computed } from 'vue'
+import { NEUTRAL_BUTTON_TYPE } from '../constants.js'
 
 const props = defineProps({
   selected: Number,
