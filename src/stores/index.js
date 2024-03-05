@@ -1,24 +1,26 @@
 import { defineStore } from 'pinia'
-import { generateTimelineItems } from '../functions.js'
+import { generateActivities, generateTimelineItems, id } from '../functions.js'
 
-
-const activities = ['Coding', 'Reading', 'Training']
 
 export const useAppStore = defineStore('app', {
   state: () => {
     return {
       timelineItems: generateTimelineItems(),
-      activities
+      activities: generateActivities()
     }
   },
   getters: {
     activitySelectOptions: (state) => {
-      return state.activities.map((label, value) => ({ label, value }))
+      return state.activities.map(({ id, name }) => ({ label: name, value: id }))
     }
   },
   actions: {
-    addActivity(activity) {
-      this.activities.push(activity)
+    addActivity(name) {
+      this.activities.push({
+        id: id(),
+        name,
+        secondsToComplete: 0
+      })
     },
     deleteActivity(activity) {
       this.activities = this.activities.filter(it => it !== activity)

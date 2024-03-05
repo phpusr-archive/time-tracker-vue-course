@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column flex-grow-1">
     <ul v-if="store.activities.length" class="p-0 d-flex flex-column flex-grow-1">
-      <ActivityItem v-for="activity in store.activities" :key="activity" :activity="activity" />
+      <ActivityItem v-for="activity in store.activities" :key="activity.id" :activity="activity" />
     </ul>
 
     <TheActivitiesEmptyState v-else />

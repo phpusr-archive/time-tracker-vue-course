@@ -11,6 +11,7 @@ export const NAV_ITEMS = [
 ]
 export const MIN_HOUR = 0
 export const MAX_HOUR = 23
+export const SECONDS_IN_HOUR = 3600
 
 export const PRIMARY_BUTTON_TYPE = 'primary'
 export const NEUTRAL_BUTTON_TYPE = 'neutral'

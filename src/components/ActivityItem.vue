@@ -4,7 +4,7 @@
       <BaseButton :type="DANGER_BUTTON_TYPE" @click="store.deleteActivity(activity)">
         <TrashIcon />
       </BaseButton>
-      <div class="ms-2 text-truncate fs-3">{{ activity }}</div>
+      <div class="ms-2 text-truncate fs-3">{{ activity.name }}</div>
     </div>
     <div class="mt-2">
       <BaseSelect
