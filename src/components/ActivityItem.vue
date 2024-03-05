@@ -28,7 +28,7 @@ import { useAppStore } from '../stores/index.js'
 
 defineProps({
   activity: {
-    type: String,
+    type: Object,
     required: true,
     validator: isActivityValid
   }

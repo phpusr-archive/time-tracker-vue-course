@@ -2,7 +2,7 @@ import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR } from './constants.js'
 
 export function isSelectOptionsValid(options) {
   return options.every(({ value, label }) =>
-    isNumber(value) && isNotEmptyString(label)
+    (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
   )
 }
 
@@ -14,8 +14,8 @@ export function isHourValid(hour) {
   return isBetween(hour, MIN_HOUR, MAX_HOUR)
 }
 
-export function isActivityValid(activity) {
-  return isNotEmptyString(activity)
+export function isActivityValid({ id, name, secondsToComplete }) {
+  return isNotEmptyString(id) && isNotEmptyString(name) && isNumber(secondsToComplete)
 }
 
 export function isButtonTypeValid(value) {
