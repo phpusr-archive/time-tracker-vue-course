@@ -12,7 +12,10 @@ export function generateActivities() {
 export function generateTimelineItems() {
   const timelineItems = []
   for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
-    timelineItems.push({ hour })
+    timelineItems.push({
+      hour,
+      activityId: null
+    })
   }
   return timelineItems
 }

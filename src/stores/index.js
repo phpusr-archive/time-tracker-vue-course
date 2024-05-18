@@ -24,6 +24,14 @@ export const useAppStore = defineStore('app', {
     },
     deleteActivity(activity) {
       this.activities = this.activities.filter(it => it !== activity)
+    },
+    setActivityForTimelineItem(hour, activityId) {
+      const timelineItem = this.timelineItems.find(it => it.hour === hour)
+      if (!timelineItem) {
+        return
+      }
+
+      timelineItem.activityId = activityId
     }
   }
 })

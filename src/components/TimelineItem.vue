@@ -5,10 +5,10 @@
     <TimelineHour :hour="timelineItem.hour" />
 
     <BaseSelect
-        :selected="selectedActivityId"
+        :selected="timelineItem.activityId"
         :options="options"
         placeholder="Rest"
-        @select="selectedActivityId = $event"
+        @select="selectActivity($event)"
     />
   </li>
 </template>
@@ -16,11 +16,10 @@
 <script setup>
 import BaseSelect from './BaseSelect.vue'
 import { isTimelineItemValid } from '../validators.js'
-import { ref } from 'vue'
 import TimelineHour from './TimelineHour.vue'
 import { useAppStore } from '../stores/index.js'
 
-defineProps({
+const { timelineItem } = defineProps({
   timelineItem: {
     required: true,
     type: Object,
@@ -31,7 +30,9 @@ defineProps({
 const store = useAppStore()
 const options = store.activitySelectOptions
 
-const selectedActivityId = ref(null)
+function selectActivity(activityId) {
+  store.setActivityForTimelineItem(timelineItem.hour, activityId)
+}
 </script>
 
 <style scoped>
