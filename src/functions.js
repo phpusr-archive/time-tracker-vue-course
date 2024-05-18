@@ -1,23 +1,11 @@
 import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from './constants.js'
 
 export function generateActivities() {
-  return [
-    {
-      id: id(),
-      name: 'Coding',
-      secondsToComplete: 0
-    },
-    {
-      id: id(),
-      name: 'Training',
-      secondsToComplete: SECONDS_IN_HOUR
-    },
-    {
-      id: id(),
-      name: 'Reading',
-      secondsToComplete: 2 * SECONDS_IN_HOUR
-    }
-  ]
+  return ['Coding', 'Training', 'Reading'].map((name, index) => ({
+    id: id(),
+    name,
+    secondsToComplete: index * SECONDS_IN_HOUR
+  }))
 }
 
 export function generateTimelineItems() {

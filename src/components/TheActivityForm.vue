@@ -4,9 +4,9 @@
         type="text"
         class="form-control me-2"
         placeholder="Activity name"
-        v-model="activity"
+        v-model="name"
     >
-    <BaseButton :disabled="!activity.trim()">
+    <BaseButton :disabled="!name.trim()">
       <PlusIcon />
     </BaseButton>
   </form>
@@ -19,11 +19,11 @@ import { useAppStore } from '../stores/index.js'
 
 const store = useAppStore()
 
-const activity = ref('')
+const name = ref('')
 
 async function submit() {
-  store.addActivity(activity.value)
-  activity.value = ''
+  store.addActivity(name.value)
+  name.value = ''
   await nextTick()
   window.scrollTo(0, document.body.scrollHeight)
 }
