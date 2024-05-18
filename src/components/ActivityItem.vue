@@ -23,7 +23,7 @@ import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import { ref } from 'vue'
 import { isActivityValid } from '../validators.js'
-import { DANGER_BUTTON_TYPE } from '../constants.js'
+import { DANGER_BUTTON_TYPE, SECONDS_IN_HOUR } from '../constants.js'
 import { useAppStore } from '../stores/index.js'
 
 defineProps({
@@ -34,7 +34,7 @@ defineProps({
   }
 })
 
-const periodSelectOptions = [15, 30, 45].map(it => ({ label: `0:${it}`, value: it }))
+const periodSelectOptions = [15, 30, 45].map(it => ({ label: `0:${it}`, value: it * SECONDS_IN_HOUR }))
 
 const secondsToComplete = ref(null)
 

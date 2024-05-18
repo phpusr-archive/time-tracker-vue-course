@@ -22,6 +22,10 @@ export function isButtonTypeValid(value) {
   return BUTTON_TYPES.includes(value)
 }
 
+export function isSelectValueValid(value) {
+  return isNotEmptyString(value) || isNumberOrNull(value)
+}
+
 // General validators
 
 export function isNumberOrNull(value) {

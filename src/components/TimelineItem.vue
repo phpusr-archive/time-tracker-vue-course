@@ -4,7 +4,12 @@
   >
     <TimelineHour :hour="timelineItem.hour" />
 
-    <BaseSelect :selected="selectedActivityId" :options="options" placeholder="Rest" @select="selectedActivityId = $event" />
+    <BaseSelect
+        :selected="selectedActivityId"
+        :options="options"
+        placeholder="Rest"
+        @select="selectedActivityId = $event"
+    />
   </li>
 </template>
 
@@ -26,7 +31,7 @@ defineProps({
 const store = useAppStore()
 const options = store.activitySelectOptions
 
-const selectedActivityId = ref(0)
+const selectedActivityId = ref(null)
 </script>
 
 <style scoped>
