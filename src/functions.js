@@ -14,7 +14,8 @@ export function generateTimelineItems() {
   for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
     timelineItems.push({
       hour,
-      activityId: null
+      activityId: null,
+      activitySeconds: 0
     })
   }
   return timelineItems
@@ -40,4 +41,12 @@ export function id() {
 
 export function normalizeSelectValue(value) {
   return isUndefinedOrNull(value) || isNaN(value) ? value : +value
+}
+
+export function formatSeconds(seconds) {
+  const hours = Math.floor(seconds / SECONDS_IN_HOUR).toString().padStart(2, '0')
+  const minutes = Math.floor((seconds % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE).toString().padStart(2, '0')
+  const remainingSeconds = (seconds % SECONDS_IN_MINUTE).toString().padStart(2, '0')
+
+  return `${hours}:${minutes}:${remainingSeconds}`
 }

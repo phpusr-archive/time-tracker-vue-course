@@ -11,33 +11,15 @@
         @select="selectActivity"
     />
 
-    <div class="d-flex align-items-center mt-2">
-      <BaseButton type="danger">
-        <ArrowPathIcon/>
-      </BaseButton>
-
-      <div class="stopwatch-text flex-grow-1 d-flex align-items-center justify-content-center rounded font-monospace
-        bg-gray-100 display-5 mx-2">
-        00:00:00
-      </div>
-
-      <BaseButton type="warning" class="me-2">
-        <PauseIcon/>
-      </BaseButton>
-
-      <BaseButton type="success">
-        <PlayIcon/>
-      </BaseButton>
-    </div>
+    <TimelineStopwatch :timelineItem="timelineItem" />
   </li>
 </template>
 
 <script setup>
-import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/outline'
 import BaseSelect from './BaseSelect.vue'
-import BaseButton from './BaseButton.vue'
-import { isTimelineItemValid } from '../validators.js'
 import TimelineHour from './TimelineHour.vue'
+import TimelineStopwatch from './TimelineStopwatch.vue'
+import { isTimelineItemValid } from '../validators.js'
 import { useAppStore } from '../stores/index.js'
 
 const { timelineItem } = defineProps({
@@ -59,8 +41,5 @@ function selectActivity(activityId) {
 <style scoped>
 li {
   border-color: #e1e1e1;
-}
-.stopwatch-text {
-  height: 52px;
 }
 </style>

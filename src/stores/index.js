@@ -47,6 +47,20 @@ export const useAppStore = defineStore('app', {
         }
         return it
       })
+    },
+    incrementTimelineItemActivitySeconds(timelineId) {
+      const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
+      if (!timelineItem) {
+        return
+      }
+      timelineItem.activitySeconds++
+    },
+    resetTimelineItemActivitySeconds(timelineId) {
+      const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
+      if (!timelineItem) {
+        return
+      }
+      timelineItem.activitySeconds = 0
     }
   }
 })
