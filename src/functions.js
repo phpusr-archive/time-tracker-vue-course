@@ -1,4 +1,4 @@
-import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from './constants.js'
+import { MAX_HOUR, MIN_HOUR, MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants.js'
 import { isUndefinedOrNull } from './validators.js'
 
 export function generateActivities() {
@@ -18,6 +18,20 @@ export function generateTimelineItems() {
     })
   }
   return timelineItems
+}
+
+export function generatePeriodSelectOptions() {
+  const periodInMinutes = [15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480]
+  return periodInMinutes.map(it => ({
+    label: generatePeriodSelectOptionsLabel(it),
+    value: it * SECONDS_IN_MINUTE
+  }))
+}
+
+function generatePeriodSelectOptionsLabel(periodInMinutes) {
+  const hours = Math.floor(periodInMinutes / MINUTES_IN_HOUR).toString().padStart(2, '0')
+  const minutes = (periodInMinutes % MINUTES_IN_HOUR).toString().padStart(2, '0')
+  return `${hours}:${minutes}`
 }
 
 export function id() {

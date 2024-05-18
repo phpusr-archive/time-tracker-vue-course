@@ -9,9 +9,9 @@
     <div class="mt-2">
       <BaseSelect
           class="font-monospace"
-          placeholder="h:mm"
+          placeholder="hh:mm"
           :selected="activity.secondsToComplete || null"
-          :options="periodSelectOptions"
+          :options="PERIOD_SELECT_OPTIONS"
           @select="updateSecondsToComplete"
       />
     </div>
@@ -22,7 +22,7 @@ import { TrashIcon } from '@heroicons/vue/24/outline/index.js'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import { isActivityValid } from '../validators.js'
-import { DANGER_BUTTON_TYPE, SECONDS_IN_HOUR } from '../constants.js'
+import { DANGER_BUTTON_TYPE, PERIOD_SELECT_OPTIONS } from '../constants.js'
 import { useAppStore } from '../stores/index.js'
 
 const { activity } = defineProps({
@@ -32,8 +32,6 @@ const { activity } = defineProps({
     validator: isActivityValid
   }
 })
-
-const periodSelectOptions = [1, 2, 3].map(it => ({ label: `0${it}:00`, value: it * SECONDS_IN_HOUR }))
 
 const store = useAppStore()
 
