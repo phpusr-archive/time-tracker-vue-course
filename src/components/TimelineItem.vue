@@ -8,7 +8,7 @@
         :selected="timelineItem.activityId"
         :options="options"
         placeholder="Rest"
-        @select="selectActivity($event)"
+        @select="selectActivity"
     />
   </li>
 </template>

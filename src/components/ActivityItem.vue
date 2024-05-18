@@ -10,9 +10,9 @@
       <BaseSelect
           class="font-monospace"
           placeholder="h:mm"
-          :selected="secondsToComplete"
+          :selected="activity.secondsToComplete || null"
           :options="periodSelectOptions"
-          @select="secondsToComplete = $event"
+          @select="updateSecondsToComplete"
       />
     </div>
   </li>
@@ -21,12 +21,11 @@
 import { TrashIcon } from '@heroicons/vue/24/outline/index.js'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
-import { ref } from 'vue'
 import { isActivityValid } from '../validators.js'
 import { DANGER_BUTTON_TYPE, SECONDS_IN_HOUR } from '../constants.js'
 import { useAppStore } from '../stores/index.js'
 
-defineProps({
+const { activity } = defineProps({
   activity: {
     type: Object,
     required: true,
@@ -34,9 +33,11 @@ defineProps({
   }
 })
 
-const periodSelectOptions = [15, 30, 45].map(it => ({ label: `0:${it}`, value: it * SECONDS_IN_HOUR }))
-
-const secondsToComplete = ref(null)
+const periodSelectOptions = [1, 2, 3].map(it => ({ label: `0${it}:00`, value: it * SECONDS_IN_HOUR }))
 
 const store = useAppStore()
+
+function updateSecondsToComplete(secondsToComplete) {
+  store.setSecondsToCompleteForActivity(activity.id, secondsToComplete || 0)
+}
 </script>
