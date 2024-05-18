@@ -5,10 +5,18 @@
 </template>
 
 <script>
-import { DANGER_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE, PRIMARY_BUTTON_TYPE } from '../constants.js'
+import {
+  DANGER_BUTTON_TYPE,
+  NEUTRAL_BUTTON_TYPE,
+  PRIMARY_BUTTON_TYPE,
+  SUCCESS_BUTTON_TYPE,
+  WARNING_BUTTON_TYPE
+} from '../constants.js'
 
 const typeClasses = {
   [PRIMARY_BUTTON_TYPE]: 'btn-primary',
+  [SUCCESS_BUTTON_TYPE]: 'btn-success',
+  [WARNING_BUTTON_TYPE]: 'btn-warning',
   [NEUTRAL_BUTTON_TYPE]: 'btn-neutral',
   [DANGER_BUTTON_TYPE]: 'btn-danger'
 }

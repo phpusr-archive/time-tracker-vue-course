@@ -18,6 +18,8 @@ export const SECONDS_IN_HOUR = MINUTES_IN_HOUR * SECONDS_IN_MINUTE
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
 
 export const PRIMARY_BUTTON_TYPE = 'primary'
+export const SUCCESS_BUTTON_TYPE = 'success'
+export const WARNING_BUTTON_TYPE = 'warning'
 export const NEUTRAL_BUTTON_TYPE = 'neutral'
 export const DANGER_BUTTON_TYPE = 'danger'
 export const BUTTON_TYPES = [PRIMARY_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE, DANGER_BUTTON_TYPE]
