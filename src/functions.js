@@ -9,13 +9,16 @@ export function generateActivities() {
   }))
 }
 
-export function generateTimelineItems() {
+export function generateTimelineItems(activities) {
   const timelineItems = []
   for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
+    const randomActivityIndex = Math.round(Math.random() * activities.length)
+    const randomActivitySeconds = randomActivityIndex === activities.length ? 0 : Math.round(Math.random() * 7200)
+
     timelineItems.push({
       hour,
-      activityId: null,
-      activitySeconds: 0
+      activityId: randomActivityIndex === activities.length ? null : activities[randomActivityIndex].id,
+      activitySeconds: randomActivitySeconds
     })
   }
   return timelineItems

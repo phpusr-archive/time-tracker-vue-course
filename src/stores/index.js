@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { generateActivities, generateTimelineItems, id } from '../functions.js'
 
+const activities = generateActivities()
 
 export const useAppStore = defineStore('app', {
   state: () => {
     return {
-      timelineItems: generateTimelineItems(),
-      activities: generateActivities()
+      activities,
+      timelineItems: generateTimelineItems(activities),
     }
   },
   getters: {
@@ -26,6 +27,7 @@ export const useAppStore = defineStore('app', {
       this.timelineItems.forEach(it => {
         if (it.activityId === activity.id) {
           it.activityId = null
+          it.activitySeconds = 0
         }
       })
       this.activities = this.activities.filter(it => it !== activity)
@@ -41,12 +43,10 @@ export const useAppStore = defineStore('app', {
       timelineItem.activityId = activity?.id || null
     },
     setSecondsToCompleteForActivity(activityId, secondsToComplete) {
-      this.activities = this.activities.map(it => {
-        if (it.id === activityId) {
-          it.secondsToComplete = secondsToComplete
-        }
-        return it
-      })
+      const activity = this.activities.find(it => it.id === activityId)
+      if (activity) {
+        activity.secondsToComplete = secondsToComplete
+      }
     },
     incrementTimelineItemActivitySeconds(timelineId) {
       const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
