@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { generateActivities, generateTimelineItems, id } from '../functions.js'
+import { generateActivities, generateTimelineItems, id } from '../functions'
 
 const activities = generateActivities()
 

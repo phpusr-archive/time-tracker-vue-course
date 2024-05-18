@@ -17,11 +17,11 @@
 
 <script setup>
 import BaseButton from './BaseButton.vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline/index.js'
-import { isSelectOptionsValid, isSelectValueValid, isUndefinedOrNull } from '../validators.js'
-import { normalizeSelectValue } from '../functions.js'
+import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { isSelectOptionsValid, isSelectValueValid, isUndefinedOrNull } from '../validators'
+import { normalizeSelectValue } from '../functions'
 import { computed } from 'vue'
-import { NEUTRAL_BUTTON_TYPE } from '../constants.js'
+import { NEUTRAL_BUTTON_TYPE } from '../constants'
 
 const props = defineProps({
   selected: [String, Number],

@@ -1,4 +1,4 @@
-import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR } from './constants.js'
+import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR } from './constants'
 
 export function isSelectOptionsValid(options) {
   return options.every(({ value, label }) =>

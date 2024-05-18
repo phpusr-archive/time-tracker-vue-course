@@ -21,11 +21,11 @@
 </template>
 
 <script setup>
-import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/outline/index.js'
+import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/outline/index'
 import BaseButton from './BaseButton.vue'
-import { isTimelineItemValid } from '../validators.js'
-import { useAppStore } from '../stores/index.js'
-import { formatSeconds } from '../functions.js'
+import { isTimelineItemValid } from '../validators'
+import { useAppStore } from '../stores'
+import { formatSeconds } from '../functions'
 import { ref } from 'vue'
 
 const { timelineItem } = defineProps({

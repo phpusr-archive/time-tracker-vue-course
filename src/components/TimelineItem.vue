@@ -19,8 +19,8 @@
 import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
-import { isTimelineItemValid } from '../validators.js'
-import { useAppStore } from '../stores/index.js'
+import { isTimelineItemValid } from '../validators'
+import { useAppStore } from '../stores'
 
 const { timelineItem } = defineProps({
   timelineItem: {

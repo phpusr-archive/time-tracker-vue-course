@@ -1,5 +1,5 @@
-import { ChartBarIcon, ClockIcon, ListBulletIcon } from '@heroicons/vue/24/outline/index.js'
-import { generatePeriodSelectOptions } from './functions.js'
+import { ChartBarIcon, ClockIcon, ListBulletIcon } from '@heroicons/vue/24/outline'
+import { generatePeriodSelectOptions } from './functions'
 
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activities'

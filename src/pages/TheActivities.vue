@@ -11,7 +11,7 @@
 </template>
 <script setup>
 import ActivityItem from '../components/ActivityItem.vue'
-import { useAppStore } from '../stores/index.js'
+import { useAppStore } from '../stores'
 import TheActivityForm from '../components/TheActivityForm.vue'
 import TheActivitiesEmptyState from '../components/TheActivitiesEmptyState.vue'
 

@@ -18,12 +18,12 @@
   </li>
 </template>
 <script setup>
-import { TrashIcon } from '@heroicons/vue/24/outline/index.js'
+import { TrashIcon } from '@heroicons/vue/24/outline'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
-import { isActivityValid } from '../validators.js'
-import { DANGER_BUTTON_TYPE, PERIOD_SELECT_OPTIONS } from '../constants.js'
-import { useAppStore } from '../stores/index.js'
+import { isActivityValid } from '../validators'
+import { DANGER_BUTTON_TYPE, PERIOD_SELECT_OPTIONS } from '../constants'
+import { useAppStore } from '../stores'
 
 const { activity } = defineProps({
   activity: {

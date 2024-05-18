@@ -13,9 +13,9 @@
 </template>
 <script setup>
 import { nextTick, ref } from 'vue'
-import { PlusIcon } from '@heroicons/vue/24/outline/index.js'
+import { PlusIcon } from '@heroicons/vue/24/outline'
 import BaseButton from './BaseButton.vue'
-import { useAppStore } from '../stores/index.js'
+import { useAppStore } from '../stores'
 
 const store = useAppStore()
 

@@ -11,7 +11,7 @@ import {
   PRIMARY_BUTTON_TYPE,
   SUCCESS_BUTTON_TYPE,
   WARNING_BUTTON_TYPE
-} from '../constants.js'
+} from '../constants'
 
 const typeClasses = {
   [PRIMARY_BUTTON_TYPE]: 'btn-primary',
@@ -23,8 +23,8 @@ const typeClasses = {
 </script>
 
 <script setup>
-import { isButtonTypeValid } from '../validators.js'
-import { PRIMARY_BUTTON_TYPE } from '../constants.js'
+import { isButtonTypeValid } from '../validators'
+import { PRIMARY_BUTTON_TYPE } from '../constants'
 
 const props = defineProps({
   type: {

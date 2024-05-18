@@ -1,5 +1,5 @@
-import { MAX_HOUR, MIN_HOUR, MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants.js'
-import { isUndefinedOrNull } from './validators.js'
+import { MAX_HOUR, MIN_HOUR, MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants'
+import { isUndefinedOrNull } from './validators'
 
 export function generateActivities() {
   return ['Coding', 'Training', 'Reading'].map((name, index) => ({

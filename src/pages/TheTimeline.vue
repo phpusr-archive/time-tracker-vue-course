@@ -13,7 +13,7 @@
 
 <script setup>
 import TimelineItem from '../components/TimelineItem.vue'
-import { useAppStore } from '../stores/index.js'
+import { useAppStore } from '../stores'
 import { onMounted, ref } from 'vue'
 
 const store = useAppStore()
