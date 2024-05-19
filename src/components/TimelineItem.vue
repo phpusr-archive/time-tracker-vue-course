@@ -35,7 +35,7 @@ const { timelineItem } = defineProps({
 
 const store = useAppStore()
 
-const emit =defineEmits({ scrollToHour: isHourValid })
+const emit = defineEmits({ scrollToHour: isHourValid })
 
 const options = store.activitySelectOptions
 

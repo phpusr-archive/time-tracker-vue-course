@@ -19,7 +19,6 @@ const route = useRoute()
 const router = useRouter()
 
 function goTo() {
-  console.log('path', route.path)
   if (route.path.slice(1) === PAGE_TIMELINE) {
     pageRef.value.$.subTree.component.exposed.scrollToHour(null, true)
   } else {
