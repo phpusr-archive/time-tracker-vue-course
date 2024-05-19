@@ -1,5 +1,5 @@
 <template>
-  <header class="d-flex align-items-center justify-content-between bg-white border-bottom p-3 sticky-top">
+  <header class="position-fixed w-100 d-flex align-items-center justify-content-between bg-white border-bottom p-3 sticky-top">
     <TheLogo @click.prevent="emit('navigate')" />
     <TheHeaderProgress />
   </header>

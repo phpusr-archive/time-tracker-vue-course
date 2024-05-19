@@ -27,4 +27,8 @@ function goTo() {
   }
 }
 </script>
-
+<style scoped>
+main {
+  margin-top: 83px;
+}
+</style>
