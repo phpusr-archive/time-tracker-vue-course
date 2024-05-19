@@ -4,8 +4,9 @@
       <TimelineItem
           v-for="timelineItem in store.timelineItems"
           :key="timelineItem.hour"
-          :timelineItem="timelineItem"
+          :timeline-item="timelineItem"
           ref="timelineItemRefs"
+          @scroll-to-hour="scrollToHour"
       />
     </ul>
   </div>
@@ -20,12 +21,11 @@ const store = useAppStore()
 
 const timelineItemRefs = ref([])
 
-onMounted(scrollToCurrentTimelineItem)
+onMounted(() => scrollToHour(new Date().getHours()))
 
-function scrollToCurrentTimelineItem() {
-  const currentHour = new Date().getHours()
-  if (currentHour > 0) {
-    timelineItemRefs.value[currentHour - 1].$el.scrollIntoView()
+function scrollToHour(hour) {
+  if (hour > 0) {
+    timelineItemRefs.value[hour - 1].$el.scrollIntoView()
   }
 }
 </script>

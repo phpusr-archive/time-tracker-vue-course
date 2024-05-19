@@ -3,11 +3,12 @@ a {
     color: black;
 }
 
-.bg-gray-100 {
+.bg-gray-100, .bg-gray-100:hover {
     background: #e1e1e1;
 }
 
-.bg-purple-900 {
+.bg-purple-900, .bg-purple-900:hover {
+    color: white;
     background: #9314ab;
 }
 

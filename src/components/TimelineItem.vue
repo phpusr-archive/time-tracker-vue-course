@@ -2,7 +2,10 @@
   <li
       class="position-relative d-flex flex-column border-top py-5 px-4"
   >
-    <TimelineHour :hour="timelineItem.hour" />
+    <TimelineHour
+        :hour="timelineItem.hour"
+        @click.prevent="$emit('scrollToHour', timelineItem.hour)"
+    />
 
     <BaseSelect
         :selected="timelineItem.activityId"
@@ -19,7 +22,7 @@
 import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
-import { isTimelineItemValid } from '../validators'
+import { isHourValid, isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
 
 const { timelineItem } = defineProps({
@@ -31,6 +34,9 @@ const { timelineItem } = defineProps({
 })
 
 const store = useAppStore()
+
+defineEmits({ scrollToHour: isHourValid })
+
 const options = store.activitySelectOptions
 
 function selectActivity(activityId) {
