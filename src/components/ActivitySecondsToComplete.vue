@@ -1,20 +1,40 @@
 
 <template>
-  <div class="ms-2 d-flex align-items-center rounded px-2 font-monospace display-6 bg-purple-100 text-purple-600">
-    {{ formatSeconds(activity.secondsToComplete) }}
+  <div :class="colorClasses" class="ms-2 d-flex align-items-center rounded px-2 font-monospace display-6">
+    {{ seconds }}
   </div>
 </template>
 
 <script setup>
-import { formatSeconds } from '../functions.js'
-import { isActivityValid } from '../validators.js'
+import { computed } from 'vue'
+import { formatSeconds, getTotalActivitySeconds } from '../functions'
+import { isActivityValid } from '../validators'
+import { useAppStore } from '../stores/index'
 
-defineProps({
+const { activity } = defineProps({
   activity: {
     required: true,
     type: Object,
     validator: isActivityValid
   }
+})
+
+const store = useAppStore()
+
+const colorClasses = computed(() => {
+  return secondsDiff.value >= 0 ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
+})
+
+const seconds = computed(() => {
+  return sign.value + formatSeconds(secondsDiff.value)
+})
+
+const sign = computed(() => {
+  return secondsDiff.value >= 0 ? '+' : '-'
+})
+
+const secondsDiff = computed(() => {
+  return getTotalActivitySeconds(activity.id, store.timelineItems) - activity.secondsToComplete
 })
 </script>
 

@@ -7,6 +7,14 @@ a {
     background: #e1e1e1;
 }
 
+.bg-green-100 {
+    background: #b7f0b8;
+}
+
+.bg-red-100 {
+    background: #fcb6b6;
+}
+
 .bg-purple-100 {
     background: #f5deff;
 }
@@ -14,6 +22,14 @@ a {
 .bg-purple-900, .bg-purple-900:hover {
     color: white;
     background: #9314ab;
+}
+
+.text-green-600 {
+    color: #2b8a3e;
+}
+
+.text-red-600 {
+    color: #b91c1c;
 }
 
 .text-purple-600 {
