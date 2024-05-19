@@ -1,6 +1,10 @@
 <template>
   <div class="d-flex align-items-center mt-2">
-    <BaseButton type="danger" @click="reset()" :disabled="timelineItem.activitySeconds === 0">
+    <BaseButton
+        type="danger"
+        :disabled="timelineItem.activitySeconds === 0"
+        @click="store.stopTimelineStopWatch(timelineItem.hour, true)"
+    >
       <ArrowPathIcon/>
     </BaseButton>
 
@@ -9,11 +13,20 @@
       {{ formatSeconds(timelineItem.activitySeconds) }}
     </div>
 
-    <BaseButton v-if="!isRunning" type="success" @click="start()" :disabled="isStartDisabled">
+    <BaseButton
+        v-if="!store.isRunningTimelineStopWatch(timelineItem.hour)"
+        type="success"
+        :disabled="isStartDisabled"
+        @click="store.startTimelineStopWatch(timelineItem.hour)"
+    >
       <PlayIcon/>
     </BaseButton>
 
-    <BaseButton v-else type="warning" @click="stop()">
+    <BaseButton
+        v-else
+        type="warning"
+        @click="store.stopTimelineStopWatch(timelineItem.hour)"
+    >
       <PauseIcon/>
     </BaseButton>
 
@@ -26,7 +39,6 @@ import BaseButton from './BaseButton.vue'
 import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
 import { formatSeconds } from '../functions'
-import { ref } from 'vue'
 
 const { timelineItem } = defineProps({
   timelineItem: {
@@ -38,26 +50,7 @@ const { timelineItem } = defineProps({
 
 const store = useAppStore()
 
-const isRunning = ref(0)
-
 const isStartDisabled = timelineItem.hour !== new Date().getHours()
-
-function start() {
-  isRunning.value = setInterval(() => {
-    store.incrementTimelineItemActivitySeconds(timelineItem.hour)
-  }, 1000)
-}
-
-function stop() {
-  clearInterval(isRunning.value)
-  isRunning.value = 0
-}
-
-function reset() {
-  stop()
-  store.resetTimelineItemActivitySeconds(timelineItem.hour);
-}
-
 </script>
 
 <style scoped>

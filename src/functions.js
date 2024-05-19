@@ -25,7 +25,8 @@ export function generateTimelineItems(activities) {
     timelineItems.push({
       hour,
       activityId,
-      activitySeconds: randomActivitySeconds
+      activitySeconds: randomActivitySeconds,
+      stopwatch: null
     })
   }
   return timelineItems

@@ -48,19 +48,27 @@ export const useAppStore = defineStore('app', {
         activity.secondsToComplete = secondsToComplete
       }
     },
-    incrementTimelineItemActivitySeconds(timelineId) {
+    startTimelineStopWatch(timelineId) {
       const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
-      if (!timelineItem) {
-        return
+      if (timelineItem) {
+        timelineItem.stopwatch = setInterval(() => {
+          timelineItem.activitySeconds++
+        }, 1000)
       }
-      timelineItem.activitySeconds++
     },
-    resetTimelineItemActivitySeconds(timelineId) {
+    stopTimelineStopWatch(timelineId, reset = false) {
       const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
-      if (!timelineItem) {
-        return
+      if (timelineItem) {
+        clearInterval(timelineItem.stopwatch)
+        timelineItem.stopwatch = null
+        if (reset) {
+          timelineItem.activitySeconds = 0
+        }
       }
-      timelineItem.activitySeconds = 0
+    },
+    isRunningTimelineStopWatch(timelineId) {
+      const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
+      return !!timelineItem?.stopwatch
     }
   }
 })
