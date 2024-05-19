@@ -7,9 +7,17 @@ a {
     background: #e1e1e1;
 }
 
+.bg-purple-100 {
+    background: #f5deff;
+}
+
 .bg-purple-900, .bg-purple-900:hover {
     color: white;
     background: #9314ab;
+}
+
+.text-purple-600 {
+    color: #9314ab;
 }
 
 .divide-y:not(:last-child) {
