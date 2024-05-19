@@ -4,7 +4,7 @@
   >
     <TimelineHour
         :hour="timelineItem.hour"
-        @click.prevent="$emit('scrollToHour', timelineItem.hour)"
+        @click.prevent="emit('scrollToHour', timelineItem.hour)"
     />
 
     <BaseSelect
@@ -35,7 +35,7 @@ const { timelineItem } = defineProps({
 
 const store = useAppStore()
 
-defineEmits({ scrollToHour: isHourValid })
+const emit =defineEmits({ scrollToHour: isHourValid })
 
 const options = store.activitySelectOptions
 

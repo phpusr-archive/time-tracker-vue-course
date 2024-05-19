@@ -6,7 +6,7 @@
           :key="timelineItem.hour"
           :timeline-item="timelineItem"
           ref="timelineItemRefs"
-          @scroll-to-hour="scrollToHour"
+          @scroll-to-hour="scrollToHour($event, true)"
       />
     </ul>
   </div>
@@ -21,11 +21,16 @@ const store = useAppStore()
 
 const timelineItemRefs = ref([])
 
-onMounted(() => scrollToHour(new Date().getHours()))
+onMounted(() => scrollToHour())
 
-function scrollToHour(hour) {
+defineExpose({ scrollToHour })
+
+function scrollToHour(hour = null, isSmooth = false) {
+  hour ??= new Date().getHours()
+
   if (hour > 0) {
-    timelineItemRefs.value[hour - 1].$el.scrollIntoView()
+    const options = { behavior: isSmooth ? 'smooth' : 'instant' }
+    timelineItemRefs.value[hour - 1].$el.scrollIntoView(options)
   }
 }
 </script>
