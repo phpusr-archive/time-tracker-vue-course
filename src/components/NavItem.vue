@@ -1,16 +1,33 @@
 <template>
   <li class="flex-grow-1">
-    <!--suppress RequiredAttributes -->
-    <router-link v-bind="$attrs" class="d-flex flex-column align-items-center p-2">
+    <router-link
+        :to="`/${page}`"
+        class="d-flex flex-column align-items-center p-2"
+        :class="{
+            'active-nav-item' : currentPage === page,
+            'pe-none':  currentPage === page,
+          }"
+    >
       <slot></slot>
     </router-link>
   </li>
 </template>
 
-<script lang="ts">
-export default  {
-  inheritAttrs: false
-}
+<script setup>
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { isPageValid } from '../validators.js'
+
+defineProps({
+  page: {
+    required: true,
+    type: String,
+    validator: isPageValid
+  }
+})
+
+const route = useRoute()
+const currentPage = computed(() => route.path.split('/')[1])
 </script>
 
 <style scoped>

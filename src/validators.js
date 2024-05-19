@@ -1,4 +1,8 @@
-import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR } from './constants'
+import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
+
+export function isPageValid(page) {
+  return NAV_ITEMS.map(it => it.action).includes(page)
+}
 
 export function isSelectOptionsValid(options) {
   return options.every(({ value, label }) =>
