@@ -19,15 +19,6 @@ export function id() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
-export function getTotalActivitySeconds(activityId, timelineItems) {
-  return timelineItems.reduce((acc, it) => {
-    if (it.activityId === activityId) {
-      return acc + it.activitySeconds
-    }
-    return acc
-  }, 0)
-}
-
 export function normalizeSelectValue(value) {
   return isUndefinedOrNull(value) || isNaN(value) ? value : +value
 }

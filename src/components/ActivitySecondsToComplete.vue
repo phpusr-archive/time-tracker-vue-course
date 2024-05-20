@@ -7,9 +7,10 @@
 
 <script setup>
 import { computed } from 'vue'
-import { formatSeconds, getTotalActivitySeconds } from '../functions'
+import { formatSeconds } from '../functions'
 import { isActivityValid } from '../validators'
 import { useAppStore } from '../stores/index'
+import { getTotalActivitySeconds } from '../services/timeline-items.js'
 
 const { activity } = defineProps({
   activity: {
