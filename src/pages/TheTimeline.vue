@@ -13,25 +13,12 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import TimelineItem from '../components/TimelineItem.vue'
 import { useAppStore } from '../stores'
-import { onMounted, ref } from 'vue'
-import { currentHour } from '../functions.js'
+import { scrollToHour, timelineItemRefs } from '../services/timeline-items.js'
 
 const store = useAppStore()
 
-const timelineItemRefs = ref([])
-
 onMounted(() => scrollToHour())
-
-defineExpose({ scrollToHour })
-
-function scrollToHour(hour = null, isSmooth = false) {
-  hour ??= currentHour()
-
-  if (hour > 0) {
-    const options = { behavior: isSmooth ? 'smooth' : 'instant' }
-    timelineItemRefs.value[hour - 1].$el.scrollIntoView(options)
-  }
-}
 </script>

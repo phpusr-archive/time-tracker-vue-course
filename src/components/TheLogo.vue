@@ -1,11 +1,25 @@
 <template>
-  <a href="#" class="d-flex align-items-center">
+  <a href="#" @click.prevent="handleClick" class="d-flex align-items-center">
     <ClockIcon class="logo" />
     <h1 class="ms-2 text-nowrap m-0">TimeTracker</h1>
   </a>
 </template>
 <script setup lang="ts">
 import { ClockIcon } from '@heroicons/vue/24/solid'
+import { PAGE_TIMELINE } from '../constants'
+import { scrollToHour } from '../services/timeline-items'
+import { useRoute, useRouter } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
+
+function handleClick() {
+  if (route.path.slice(1) === PAGE_TIMELINE) {
+    scrollToHour(null, true)
+  } else {
+    router.push('/' + PAGE_TIMELINE)
+  }
+}
 </script>
 <style scoped>
 .logo {
