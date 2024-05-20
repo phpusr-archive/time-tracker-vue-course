@@ -59,3 +59,7 @@ export function isString(value) {
 export function isUndefinedOrNull(value) {
   return value == null
 }
+
+export function isUndefined(value) {
+  return value === undefined
+}

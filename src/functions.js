@@ -63,6 +63,10 @@ export function normalizeSelectValue(value) {
   return isUndefinedOrNull(value) || isNaN(value) ? value : +value
 }
 
+export function currentHour() {
+  return new Date().getHours()
+}
+
 export function formatSeconds(seconds) {
   if (seconds < 0) {
     seconds *= -1

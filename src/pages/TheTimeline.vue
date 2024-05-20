@@ -6,7 +6,7 @@
           :key="timelineItem.hour"
           :timeline-item="timelineItem"
           ref="timelineItemRefs"
-          @scroll-to-hour="scrollToHour($event, true)"
+          @scroll-to-hour="scrollToHour(timelineItem.hour, true)"
       />
     </ul>
   </div>
@@ -16,6 +16,7 @@
 import TimelineItem from '../components/TimelineItem.vue'
 import { useAppStore } from '../stores'
 import { onMounted, ref } from 'vue'
+import { currentHour } from '../functions.js'
 
 const store = useAppStore()
 
@@ -26,7 +27,7 @@ onMounted(() => scrollToHour())
 defineExpose({ scrollToHour })
 
 function scrollToHour(hour = null, isSmooth = false) {
-  hour ??= new Date().getHours()
+  hour ??= currentHour()
 
   if (hour > 0) {
     const options = { behavior: isSmooth ? 'smooth' : 'instant' }

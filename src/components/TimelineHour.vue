@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+import { currentHour } from '../functions'
 import { isHourValid } from '../validators'
 
 const props = defineProps({
@@ -17,7 +18,7 @@ const formattedHour = `${props.hour.toString().padStart(2, '0')}:00`
 
 const classes = [
   'hours rounded px-2 font-monospace fs-3',
-  props.hour === new Date().getHours() ? 'bg-purple-900 text-white' : 'bg-gray-100 text-secondary'
+  props.hour === currentHour() ? 'bg-purple-900 text-white' : 'bg-gray-100 text-secondary'
 ]
 
 </script>

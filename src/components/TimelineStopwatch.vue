@@ -38,7 +38,7 @@ import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/outline/in
 import BaseButton from './BaseButton.vue'
 import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
-import { formatSeconds } from '../functions'
+import { currentHour, formatSeconds } from '../functions'
 
 const { timelineItem } = defineProps({
   timelineItem: {
@@ -50,7 +50,7 @@ const { timelineItem } = defineProps({
 
 const store = useAppStore()
 
-const isStartDisabled = timelineItem.hour !== new Date().getHours()
+const isStartDisabled = timelineItem.hour !== currentHour()
 </script>
 
 <style scoped>

@@ -32,7 +32,7 @@ export const useAppStore = defineStore('app', {
       })
       this.activities = this.activities.filter(it => it !== activity)
     },
-    setActivityForTimelineItem(hour, activityId) {
+    setTimelineItemActivity(hour, activityId) {
       const timelineItem = this.timelineItems.find(it => it.hour === hour)
       if (!timelineItem) {
         return
@@ -45,7 +45,7 @@ export const useAppStore = defineStore('app', {
     setSecondsToCompleteForActivity(activityId, secondsToComplete) {
       const activity = this.activities.find(it => it.id === activityId)
       if (activity) {
-        activity.secondsToComplete = secondsToComplete
+        activity.secondsToComplete = secondsToComplete || 0
       }
     },
     startTimelineStopWatch(timelineId) {
