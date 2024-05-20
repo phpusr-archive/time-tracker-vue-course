@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { generateActivities, generateTimelineItems, id } from '../functions'
+import { id } from '../functions'
+import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants.js'
 
 const activities = generateActivities()
 
@@ -7,7 +8,7 @@ export const useAppStore = defineStore('app', {
   state: () => {
     return {
       activities,
-      timelineItems: generateTimelineItems(activities),
+      timelineItems: generateTimelineItems(),
     }
   },
   getters: {
@@ -72,3 +73,34 @@ export const useAppStore = defineStore('app', {
     }
   }
 })
+
+function generateActivities() {
+  return ['Coding', 'Training', 'Reading'].map((name, index) => ({
+    id: id(),
+    name,
+    secondsToComplete: index * SECONDS_IN_HOUR
+  }))
+}
+
+function generateTimelineItems() {
+  const timelineItems = []
+  for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
+    const randomActivityIndex = Math.round(Math.random() * (activities.length - 1))
+    //const randomActivitySeconds = randomActivityIndex === activities.length ? 0 : Math.round(Math.random() * 7200)
+
+    //const activityId = randomActivityIndex === activities.length ? null : activities[randomActivityIndex].id
+    let activityId = randomActivityIndex === activities.length ? null : activities[randomActivityIndex].id
+    if (hour > 4) {
+      activityId = null
+    }
+    const randomActivitySeconds = activityId === null ? 0 : Math.round(Math.random() * 1000)
+
+    timelineItems.push({
+      hour,
+      activityId,
+      activitySeconds: randomActivitySeconds,
+      stopwatch: null
+    })
+  }
+  return timelineItems
+}

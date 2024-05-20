@@ -1,36 +1,5 @@
-import { MAX_HOUR, MIN_HOUR, MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants'
+import { MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants'
 import { isUndefinedOrNull } from './validators'
-
-export function generateActivities() {
-  return ['Coding', 'Training', 'Reading'].map((name, index) => ({
-    id: id(),
-    name,
-    secondsToComplete: index * SECONDS_IN_HOUR
-  }))
-}
-
-export function generateTimelineItems(activities) {
-  const timelineItems = []
-  for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
-    const randomActivityIndex = Math.round(Math.random() * (activities.length - 1))
-    //const randomActivitySeconds = randomActivityIndex === activities.length ? 0 : Math.round(Math.random() * 7200)
-
-    //const activityId = randomActivityIndex === activities.length ? null : activities[randomActivityIndex].id
-    let activityId = randomActivityIndex === activities.length ? null : activities[randomActivityIndex].id
-    if (hour > 4) {
-      activityId = null
-    }
-    const randomActivitySeconds = activityId === null ? 0 : Math.round(Math.random() * 1000)
-
-    timelineItems.push({
-      hour,
-      activityId,
-      activitySeconds: randomActivitySeconds,
-      stopwatch: null
-    })
-  }
-  return timelineItems
-}
 
 export function generatePeriodSelectOptions() {
   const periodInMinutes = [15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480]
