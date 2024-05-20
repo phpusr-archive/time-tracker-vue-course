@@ -1,4 +1,5 @@
 import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
+import { ICONS } from './services/icons'
 
 export function isPageValid(page) {
   return NAV_ITEMS.some(it => it.action === page)
@@ -32,6 +33,10 @@ export function isButtonTypeValid(value) {
 
 export function isSelectValueValid(value) {
   return isNotEmptyString(value) || isNumberOrNull(value)
+}
+
+export function isIconValid(icon) {
+  return Object.keys(ICONS).includes(icon)
 }
 
 // General validators

@@ -1,4 +1,4 @@
-import { currentHour } from '../functions.js'
+import { currentHour } from '../functions'
 import { ref } from 'vue'
 
 export const timelineItemRefs = ref([])

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { id } from '../functions'
-import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants.js'
+import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants'
 
 const activities = generateActivities()
 

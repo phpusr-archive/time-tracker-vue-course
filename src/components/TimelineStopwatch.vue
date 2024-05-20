@@ -5,7 +5,7 @@
         :disabled="timelineItem.activitySeconds === 0"
         @click="store.stopTimelineStopWatch(timelineItem.hour, true)"
     >
-      <BaseIcon name="ArrowPath" />
+      <BaseIcon :name="ICON_ARROW_PATH" />
     </BaseButton>
 
     <div class="stopwatch-text flex-grow-1 d-flex align-items-center justify-content-center rounded font-monospace
@@ -19,7 +19,7 @@
         :disabled="isStartDisabled"
         @click="store.startTimelineStopWatch(timelineItem.hour)"
     >
-      <BaseIcon name="Play" />
+      <BaseIcon :name="ICON_PLAY" />
     </BaseButton>
 
     <BaseButton
@@ -27,7 +27,7 @@
         type="warning"
         @click="store.stopTimelineStopWatch(timelineItem.hour)"
     >
-      <BaseIcon name="Pause" />
+      <BaseIcon :name="ICON_PAUSE" />
     </BaseButton>
 
   </div>
@@ -39,6 +39,7 @@ import BaseIcon from './BaseIcon.vue'
 import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
 import { currentHour, formatSeconds } from '../functions'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../services/icons'
 
 const { timelineItem } = defineProps({
   timelineItem: {

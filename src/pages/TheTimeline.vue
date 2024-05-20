@@ -16,7 +16,7 @@
 import { onMounted } from 'vue'
 import TimelineItem from '../components/TimelineItem.vue'
 import { useAppStore } from '../stores'
-import { scrollToHour, timelineItemRefs } from '../services/timeline-items.js'
+import { scrollToHour, timelineItemRefs } from '../services/timeline-items'
 
 const store = useAppStore()
 

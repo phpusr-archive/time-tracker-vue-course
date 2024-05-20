@@ -18,7 +18,7 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
-import { isNavItemValid } from '../validators.js'
+import { isNavItemValid } from '../validators'
 
 defineProps({
   navItem: {

@@ -2,7 +2,7 @@
   <li class="d-flex flex-column p-3 divide-y">
     <div class="d-flex align-items-center">
       <BaseButton :type="DANGER_BUTTON_TYPE" @click="store.deleteActivity(activity)">
-        <BaseIcon name="Trash" />
+        <BaseIcon :name="ICON_TRASH" />
       </BaseButton>
       <div class="ms-2 text-truncate fs-3">{{ activity.name }}</div>
     </div>
@@ -26,6 +26,7 @@ import BaseIcon from './BaseIcon.vue'
 import { isActivityValid } from '../validators'
 import { DANGER_BUTTON_TYPE, PERIOD_SELECT_OPTIONS } from '../constants'
 import { useAppStore } from '../stores'
+import { ICON_TRASH } from '../services/icons'
 
 const { activity } = defineProps({
   activity: {
