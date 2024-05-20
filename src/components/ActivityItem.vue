@@ -38,6 +38,6 @@ const { activity } = defineProps({
 const store = useAppStore()
 
 function updateSecondsToComplete(secondsToComplete) {
-  store.setSecondsToCompleteForActivity(activity.id, secondsToComplete)
+  store.setActivitySecondsToComplete(activity.id, secondsToComplete)
 }
 </script>
