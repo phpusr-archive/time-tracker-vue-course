@@ -4,11 +4,8 @@
       <NavItem
           v-for="navItem in NAV_ITEMS"
           :key="navItem.action"
-          :page="navItem.action"
-      >
-        <component :is="navItem.icon" class="nav-icon" />
-        {{ navItem.title }}
-      </NavItem>
+          :nav-item="navItem"
+      />
     </ul>
   </nav>
 </template>
@@ -22,8 +19,5 @@ import { NAV_ITEMS } from '../constants'
 nav ul {
   list-style: none;
   padding-inline-start: 0;
-}
-.nav-icon {
-  height: 30px;
 }
 </style>

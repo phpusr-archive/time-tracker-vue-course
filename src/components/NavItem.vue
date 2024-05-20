@@ -1,14 +1,15 @@
 <template>
   <li class="flex-grow-1">
     <router-link
-        :to="`/${page}`"
+        :to="`/${navItem.action}`"
         class="d-flex flex-column align-items-center p-2"
         :class="{
-            'active-nav-item' : currentPage === page,
-            'pe-none':  currentPage === page,
+            'active-nav-item' : currentPage === navItem.action,
+            'pe-none':  currentPage === navItem.action,
           }"
     >
-      <slot></slot>
+      <component :is="navItem.icon" class="nav-icon" />
+      {{ navItem.title }}
     </router-link>
   </li>
 </template>
@@ -16,13 +17,13 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
-import { isPageValid } from '../validators.js'
+import { isNavItemValid } from '../validators.js'
 
 defineProps({
-  page: {
+  navItem: {
     required: true,
-    type: String,
-    validator: isPageValid
+    type: Object,
+    validator: isNavItemValid
   }
 })
 
@@ -31,11 +32,14 @@ const currentPage = computed(() => route.path.split('/')[1])
 </script>
 
 <style scoped>
-nav li a {
+li a {
   color: black;
   text-decoration: none;
 }
 .active-nav-item {
   background: #e9ecef;
+}
+.nav-icon {
+  height: 30px;
 }
 </style>

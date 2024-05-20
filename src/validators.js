@@ -1,7 +1,11 @@
 import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
 
 export function isPageValid(page) {
-  return NAV_ITEMS.map(it => it.action).includes(page)
+  return NAV_ITEMS.some(it => it.action === page)
+}
+
+export function isNavItemValid(navItem) {
+  return NAV_ITEMS.includes(navItem)
 }
 
 export function isSelectOptionsValid(options) {
