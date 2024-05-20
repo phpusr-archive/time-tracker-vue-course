@@ -8,7 +8,7 @@
             'pe-none':  currentPage === navItem.action,
           }"
     >
-      <component :is="navItem.icon" class="nav-icon" />
+      <BaseIcon :name="navItem.icon" class="nav-icon" />
       {{ navItem.title }}
     </router-link>
   </li>
@@ -17,6 +17,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
+import BaseIcon from './BaseIcon.vue'
 import { isNavItemValid } from '../validators.js'
 
 defineProps({

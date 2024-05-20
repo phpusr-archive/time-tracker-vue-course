@@ -2,7 +2,7 @@
   <router-link :to="`/${PAGE_DAY_COMPLETE}`" class="fs-6">
     <div v-if="!true" class="d-flex align-items-center fs-6">
       Day complete
-      <CheckCircleIcon class="ms-2 text-success" style="height: 30px" />
+      <BaseIcon name="CheckCircleSolid" class="ms-2 text-success" style="height: 30px" />
     </div>
     <div v-else class="d-flex align-items-center fs-6">
       Progress
@@ -12,6 +12,6 @@
   </router-link>
 </template>
 <script setup lang="ts">
-import { CheckCircleIcon } from "@heroicons/vue/24/solid";
-import { PAGE_DAY_COMPLETE } from "../constants";
+import BaseIcon from './BaseIcon.vue'
+import { PAGE_DAY_COMPLETE } from '../constants'
 </script>

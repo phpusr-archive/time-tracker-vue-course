@@ -7,13 +7,13 @@
         v-model="name"
     >
     <BaseButton :disabled="!name.trim()">
-      <PlusIcon />
+      <BaseIcon name="Plus" />
     </BaseButton>
   </form>
 </template>
 <script setup>
 import { nextTick, ref } from 'vue'
-import { PlusIcon } from '@heroicons/vue/24/outline'
+import BaseIcon from './BaseIcon.vue'
 import BaseButton from './BaseButton.vue'
 import { useAppStore } from '../stores'
 

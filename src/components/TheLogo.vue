@@ -1,14 +1,14 @@
 <template>
   <a href="#" @click.prevent="handleClick" class="d-flex align-items-center">
-    <ClockIcon class="logo" />
+    <BaseIcon name="ClockSolid" class="logo" />
     <h1 class="ms-2 text-nowrap m-0">TimeTracker</h1>
   </a>
 </template>
 <script setup lang="ts">
-import { ClockIcon } from '@heroicons/vue/24/solid'
+import { useRoute, useRouter } from 'vue-router'
+import BaseIcon from './BaseIcon.vue'
 import { PAGE_TIMELINE } from '../constants'
 import { scrollToHour } from '../services/timeline-items'
-import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
