@@ -12,6 +12,9 @@ export const useAppStore = defineStore('app', {
     }
   },
   getters: {
+    trackedActivities: (state) => {
+      return state.activities.filter(it => it.secondsToComplete > 0)
+    },
     activitySelectOptions: (state) => {
       return state.activities.map(({ id, name }) => ({ label: name, value: id }))
     }

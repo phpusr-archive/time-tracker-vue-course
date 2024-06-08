@@ -19,6 +19,18 @@ a {
     background: #ff3434;
 }
 
+.bg-yellow-500 {
+    background: #fff834;
+}
+
+.bg-blue-500 {
+    background: #345dff;
+}
+
+.bg-green-500 {
+    background: #1da50a;
+}
+
 .bg-purple-100 {
     background: #f5deff;
 }
