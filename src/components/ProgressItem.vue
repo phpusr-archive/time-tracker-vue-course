@@ -12,11 +12,18 @@
 </template>
 
 <script setup>
-const { index } = defineProps(['index', 'activity'])
+import { useAppStore } from '../stores/index.js'
+import { formatSeconds } from '../functions.js'
+import { computed } from 'vue'
+
+const store = useAppStore()
+
+const { index, activity } = defineProps(['index', 'activity'])
 
 const color = ['red', 'yellow', 'blue', 'green'][index]
-const progress = [10, 50, 70, 100][index]
-const timeProgress = ['03:00 / 30:00', '15:00 / 30:00', '21:00 / 30:00', '30:00 / 30:00'][index]
+const progress = computed(() => store.getActivityProgress(activity))
+const totalActivitySeconds = computed(() => store.getTotalActivitySeconds(activity.id))
+const timeProgress = computed(() => `${formatSeconds(totalActivitySeconds.value)} / ${formatSeconds(activity.secondsToComplete)}`)
 </script>
 
 <style scoped>

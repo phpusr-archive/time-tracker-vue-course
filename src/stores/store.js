@@ -27,6 +27,18 @@ export const useAppStore = defineStore('app', {
         secondsToComplete: 0
       })
     },
+    getTotalActivitySeconds(activityId) {
+      return this.timelineItems.reduce((acc, it) => {
+        if (it.activityId === activityId) {
+          return acc + it.activitySeconds
+        }
+        return acc
+      }, 0)
+    },
+    getActivityProgress(activity) {
+      const totalActivitySeconds = this.getTotalActivitySeconds(activity.id)
+      return Math.round(totalActivitySeconds / activity.secondsToComplete * 100)
+    },
     deleteActivity(activity) {
       this.timelineItems.forEach(it => {
         if (it.activityId === activity.id) {

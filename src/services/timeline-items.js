@@ -3,15 +3,6 @@ import { ref } from 'vue'
 
 export const timelineItemRefs = ref([])
 
-export function getTotalActivitySeconds(activityId, timelineItems) {
-  return timelineItems.reduce((acc, it) => {
-    if (it.activityId === activityId) {
-      return acc + it.activitySeconds
-    }
-    return acc
-  }, 0)
-}
-
 export function scrollToHour(hour = null, isSmooth = false) {
   hour ??= currentHour()
 

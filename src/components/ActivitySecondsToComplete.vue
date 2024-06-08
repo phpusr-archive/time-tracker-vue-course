@@ -10,7 +10,6 @@ import { computed } from 'vue'
 import { formatSeconds } from '../functions'
 import { isActivityValid } from '../validators'
 import { useAppStore } from '../stores/index'
-import { getTotalActivitySeconds } from '../services/timeline-items'
 
 const { activity } = defineProps({
   activity: {
@@ -35,7 +34,7 @@ const sign = computed(() => {
 })
 
 const secondsDiff = computed(() => {
-  return getTotalActivitySeconds(activity.id, store.timelineItems) - activity.secondsToComplete
+  return store.getTotalActivitySeconds(activity.id) - activity.secondsToComplete
 })
 </script>
 
