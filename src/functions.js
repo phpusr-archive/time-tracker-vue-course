@@ -38,3 +38,19 @@ export function formatSeconds(seconds) {
 
   return `${hours}:${minutes}:${remainingSeconds}`
 }
+
+export function getProgressColorClass(progress) {
+  if (progress < 33) {
+    return 'bg-red-500'
+  }
+
+  if (progress < 66) {
+    return 'bg-yellow-500'
+  }
+
+  if (progress < 100) {
+    return 'bg-blue-500'
+  }
+
+  return 'bg-green-500'
+}
