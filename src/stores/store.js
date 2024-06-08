@@ -17,6 +17,9 @@ export const useAppStore = defineStore('app', {
     },
     activitySelectOptions: (state) => {
       return state.activities.map(({ id, name }) => ({ label: name, value: id }))
+    },
+    totalActivitySecondsToComplete(state) {
+      return state.trackedActivities.reduce((acc, it) => acc + it.secondsToComplete, 0)
     }
   },
   actions: {
@@ -36,7 +39,18 @@ export const useAppStore = defineStore('app', {
       }, 0)
     },
     calculateActivityCompletionPercentage(activity, trackedActivitySeconds) {
+      if (trackedActivitySeconds <= 0 || activity.secondsToComplete <= 0) {
+        return 0
+      }
+
       return Math.round(trackedActivitySeconds / activity.secondsToComplete * 100)
+    },
+    calculateCompletionPercentage(totalTrackedSeconds) {
+      if (totalTrackedSeconds <= 0 || this.totalActivitySecondsToComplete <= 0) {
+        return 0
+      }
+
+      return Math.round(totalTrackedSeconds / this.totalActivitySecondsToComplete * 100)
     },
     deleteActivity(activity) {
       this.timelineItems.forEach(it => {
