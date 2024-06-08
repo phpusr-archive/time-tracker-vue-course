@@ -1,9 +1,8 @@
 <template>
   <ul class="list-group list-group-flush">
     <ProgressItem
-        v-for="(activity, index) in store.trackedActivities"
+        v-for="activity in store.trackedActivities"
         :key="activity.id"
-        :index="index"
         :activity="activity"
     ></ProgressItem>
   </ul>

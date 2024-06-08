@@ -18,7 +18,7 @@ import { formatSeconds, getProgressColorClass } from '../functions'
 
 const store = useAppStore()
 
-const { index, activity } = defineProps(['index', 'activity'])
+const { activity } = defineProps(['activity'])
 
 const progress = computed(() => store.getActivityProgress(activity))
 const totalActivitySeconds = computed(() => store.getTotalActivitySeconds(activity.id))
