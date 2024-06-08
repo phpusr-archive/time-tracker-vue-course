@@ -2,7 +2,7 @@
   <li class="d-flex flex-column p-4 list-group-item">
     <div class="text-truncate activity">{{ activity.name }}</div>
     <div class="d-flex overflow-hidden rounded bg-neutral-200">
-      <div :class="getProgressColorClass(percentage)" :style="`width: ${percentage}%`">&nbsp;</div>
+      <div :class="colorClass" :style="`width: ${percentage}%`">&nbsp;</div>
     </div>
     <div class="d-flex justify-content-between font-monospace">
       <span>{{ percentage }}%</span>
@@ -12,12 +12,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useAppStore } from '../stores/index'
-import { formatSeconds, getProgressColorClass } from '../functions'
 import { isActivityValid } from '../validators'
-
-const store = useAppStore()
+import { useProgress } from '../composables/progress'
 
 const { activity } = defineProps({
   activity: {
@@ -27,11 +23,7 @@ const { activity } = defineProps({
   }
 })
 
-const percentage = computed(() => store.calculateActivityCompletionPercentage(activity))
-const timeProgress = computed(() => {
-  const totalActivitySeconds = store.calculateTrackedActivitySeconds(activity.id)
-  return `${formatSeconds(totalActivitySeconds)} / ${formatSeconds(activity.secondsToComplete)}`
-})
+const { percentage, timeProgress, colorClass } = useProgress(activity)
 </script>
 
 <style scoped>

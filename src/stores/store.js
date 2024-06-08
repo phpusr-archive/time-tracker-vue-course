@@ -35,9 +35,8 @@ export const useAppStore = defineStore('app', {
         return acc
       }, 0)
     },
-    calculateActivityCompletionPercentage(activity) {
-      const totalActivitySeconds = this.calculateTrackedActivitySeconds(activity.id)
-      return Math.round(totalActivitySeconds / activity.secondsToComplete * 100)
+    calculateActivityCompletionPercentage(activity, trackedActivitySeconds) {
+      return Math.round(trackedActivitySeconds / activity.secondsToComplete * 100)
     },
     deleteActivity(activity) {
       this.timelineItems.forEach(it => {
