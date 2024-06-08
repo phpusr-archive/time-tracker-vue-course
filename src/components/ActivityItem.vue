@@ -14,12 +14,12 @@
           :options="PERIOD_SELECT_OPTIONS"
           @select="updateSecondsToComplete"
       />
-      <ActivitySecondsToComplete v-if="activity.secondsToComplete > 0" :activity="activity" />
+      <RemainingActivitySeconds v-if="activity.secondsToComplete > 0" :activity="activity" />
     </div>
   </li>
 </template>
 <script setup>
-import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
+import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import BaseIcon from './BaseIcon.vue'

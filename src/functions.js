@@ -27,6 +27,11 @@ export function currentHour() {
   return new Date().getHours()
 }
 
+export function formatSecondsWithSign(seconds) {
+  const sign = seconds >= 0 ? '+' : '-'
+  return `${sign}${formatSeconds(seconds)}`
+}
+
 export function formatSeconds(seconds) {
   if (seconds < 0) {
     seconds *= -1
