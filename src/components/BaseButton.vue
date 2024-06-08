@@ -1,6 +1,6 @@
 <template>
   <button :class="classes">
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
@@ -34,7 +34,7 @@ const props = defineProps({
   }
 })
 
-const classes = 'btn ' + typeClasses[props.type]
+const classes = ['btn', typeClasses[props.type]]
 </script>
 
 <style scoped>

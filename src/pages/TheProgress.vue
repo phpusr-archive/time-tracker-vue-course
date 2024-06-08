@@ -1,16 +1,18 @@
 <template>
-  <ul class="list-group list-group-flush">
+  <ul v-if="store.trackedActivities.length > 0" class="list-group list-group-flush">
     <ProgressItem
         v-for="activity in store.trackedActivities"
         :key="activity.id"
         :activity="activity"
     ></ProgressItem>
   </ul>
+  <TheProgressEmptyState v-else />
 </template>
 
 <script setup>
 import ProgressItem from '../components/ProgressItem.vue'
-import { useAppStore } from '../stores/index.js'
+import TheProgressEmptyState from '../components/TheProgressEmptyState.vue'
+import { useAppStore } from '../stores'
 
 const store = useAppStore()
 

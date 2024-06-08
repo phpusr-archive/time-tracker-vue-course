@@ -7,7 +7,7 @@
     <div v-else class="d-flex align-items-center fs-6">
       Progress
       <span class="ms-1">20%</span>
-      <div class="ms-2 text-success rounded-circle bg-danger" style="width: 10px; height: 10px"></div>
+      <div class="ms-2 text-success rounded-circle bg-danger" style="width: 10px; height: 10px" />
     </div>
   </router-link>
 </template>
