@@ -2,10 +2,10 @@
   <li class="d-flex flex-column p-4 list-group-item">
     <div class="text-truncate activity">{{ activity.name }}</div>
     <div class="d-flex overflow-hidden rounded bg-neutral-200">
-      <div :class="getProgressColorClass(progress)" :style="`width: ${progress}%`">&nbsp;</div>
+      <div :class="getProgressColorClass(percentage)" :style="`width: ${percentage}%`">&nbsp;</div>
     </div>
     <div class="d-flex justify-content-between font-monospace">
-      <span>{{ progress }}%</span>
+      <span>{{ percentage }}%</span>
       <span>{{ timeProgress }}</span>
     </div>
   </li>
@@ -27,9 +27,9 @@ const { activity } = defineProps({
   }
 })
 
-const progress = computed(() => store.getActivityProgress(activity))
+const percentage = computed(() => store.calculateActivityCompletionPercentage(activity))
 const timeProgress = computed(() => {
-  const totalActivitySeconds = store.getTotalActivitySeconds(activity.id)
+  const totalActivitySeconds = store.calculateTrackedActivitySeconds(activity.id)
   return `${formatSeconds(totalActivitySeconds)} / ${formatSeconds(activity.secondsToComplete)}`
 })
 </script>

@@ -34,7 +34,7 @@ const sign = computed(() => {
 })
 
 const secondsDiff = computed(() => {
-  return store.getTotalActivitySeconds(activity.id) - activity.secondsToComplete
+  return store.calculateTrackedActivitySeconds(activity.id) - activity.secondsToComplete
 })
 </script>
 
