@@ -15,14 +15,23 @@
 import { computed } from 'vue'
 import { useAppStore } from '../stores/index'
 import { formatSeconds, getProgressColorClass } from '../functions'
+import { isActivityValid } from '../validators'
 
 const store = useAppStore()
 
-const { activity } = defineProps(['activity'])
+const { activity } = defineProps({
+  activity: {
+    required: true,
+    type: Object,
+    validator: isActivityValid
+  }
+})
 
 const progress = computed(() => store.getActivityProgress(activity))
-const totalActivitySeconds = computed(() => store.getTotalActivitySeconds(activity.id))
-const timeProgress = computed(() => `${formatSeconds(totalActivitySeconds.value)} / ${formatSeconds(activity.secondsToComplete)}`)
+const timeProgress = computed(() => {
+  const totalActivitySeconds = store.getTotalActivitySeconds(activity.id)
+  return `${formatSeconds(totalActivitySeconds)} / ${formatSeconds(activity.secondsToComplete)}`
+})
 </script>
 
 <style scoped>
