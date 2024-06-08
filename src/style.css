@@ -15,6 +15,10 @@ a {
     background: #fcb6b6;
 }
 
+.bg-red-500 {
+    background: #ff3434;
+}
+
 .bg-purple-100 {
     background: #f5deff;
 }
@@ -22,6 +26,10 @@ a {
 .bg-purple-900, .bg-purple-900:hover {
     color: white;
     background: #9314ab;
+}
+
+.bg-neutral-200 {
+    background: #e3e3e3;
 }
 
 .text-green-600 {
