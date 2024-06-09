@@ -2,23 +2,31 @@
   <hr
       ref="indicatorRef"
       class="pe-none position-absolute z-3 w-100 border-bottom border-2 border-danger"
-      :style="{ top: `${calculateTopOffset()}px` }"
+      :style="{ top: `${calculateTopOffset}px` }"
   >
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { SECONDS_IN_DAY, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from '../constants.js'
 
+const secondsSinceMidnight = ref(calculateSecondsSinceMidnight())
 const indicatorRef = ref()
 
-function calculateTopOffset() {
-  return calculateSecondsSinceMidnightInPercentage() / 100 * getTimelineHeight() - 18
-}
+setInterval(() => {
+  secondsSinceMidnight.value++
+  if (secondsSinceMidnight.value > SECONDS_IN_DAY) {
+    secondsSinceMidnight.value = 0
+  }
+}, 1000)
 
-function calculateSecondsSinceMidnightInPercentage() {
-  return calculateSecondsSinceMidnight() / SECONDS_IN_DAY * 100
-}
+const calculateTopOffset = computed(() => {
+  return calculateSecondsSinceMidnightInPercentage.value / 100 * getTimelineHeight() - 18
+})
+
+const calculateSecondsSinceMidnightInPercentage = computed(() => {
+  return secondsSinceMidnight.value / SECONDS_IN_DAY * 100
+})
 
 function calculateSecondsSinceMidnight() {
   const now = new Date()
