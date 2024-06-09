@@ -16,6 +16,7 @@ export const MAX_HOUR = 23
 export const MINUTES_IN_HOUR = 60
 export const SECONDS_IN_MINUTE = 60
 export const SECONDS_IN_HOUR = MINUTES_IN_HOUR * SECONDS_IN_MINUTE
+export const SECONDS_IN_DAY = SECONDS_IN_HOUR * 24
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
 
