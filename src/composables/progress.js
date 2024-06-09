@@ -21,9 +21,12 @@ export function useProgress(activity) {
     getProgressColorClass(percentage.value)
   )
 
+  const progressWidth = computed(() => Math.min(percentage.value, 100) + '%')
+
   return {
     percentage,
     timeProgress,
-    colorClass
+    colorClass,
+    progressWidth
   }
 }

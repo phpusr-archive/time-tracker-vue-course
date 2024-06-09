@@ -8,7 +8,7 @@ export function useTotalProgress() {
   const percentage = computed(() => {
     const totalTrackedSeconds = store.trackedActivities.map(activity => {
       const trackedSeconds = store.calculateTrackedActivitySeconds(activity.id)
-      return trackedSeconds > activity.secondsToComplete ? activity.secondsToComplete : trackedSeconds
+      return Math.min(trackedSeconds, activity.secondsToComplete)
     }).reduce((acc, it) => acc + it, 0)
 
     return store.calculateCompletionPercentage(totalTrackedSeconds)
