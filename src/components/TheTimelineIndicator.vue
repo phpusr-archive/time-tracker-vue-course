@@ -7,18 +7,22 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { SECONDS_IN_DAY, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from '../constants.js'
+import { computed, onUnmounted, ref } from 'vue'
+import { SECONDS_IN_DAY, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from '../constants'
 
 const secondsSinceMidnight = ref(calculateSecondsSinceMidnight())
 const indicatorRef = ref()
 
-setInterval(() => {
+let timer = setInterval(() => {
   secondsSinceMidnight.value++
   if (secondsSinceMidnight.value > SECONDS_IN_DAY) {
     secondsSinceMidnight.value = 0
   }
 }, 1000)
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
 
 const calculateTopOffset = computed(() => {
   return calculateSecondsSinceMidnightInPercentage.value / 100 * getTimelineHeight() - 18
