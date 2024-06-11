@@ -23,10 +23,6 @@ export function normalizeSelectValue(value) {
   return isUndefinedOrNull(value) || isNaN(value) ? value : +value
 }
 
-export function currentHour() {
-  return new Date().getHours()
-}
-
 export function formatSecondsWithSign(seconds) {
   const sign = seconds >= 0 ? '+' : '-'
   return `${sign}${formatSeconds(seconds)}`

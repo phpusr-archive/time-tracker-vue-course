@@ -34,12 +34,14 @@
 </template>
 
 <script setup>
+import { computed, watch } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
-import { currentHour, formatSeconds } from '../functions'
+import { formatSeconds } from '../functions'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../services/icons'
+import { now } from '../time'
 
 const { timelineItem } = defineProps({
   timelineItem: {
@@ -51,7 +53,15 @@ const { timelineItem } = defineProps({
 
 const store = useAppStore()
 
-const isStartDisabled = timelineItem.hour !== currentHour()
+const isStartDisabled = computed(() => {
+  return timelineItem.hour !== now.value.getHours()
+})
+
+watch(isStartDisabled, (newValue) => {
+  if (newValue) {
+    store.stopTimelineStopWatch(timelineItem.hour)
+  }
+})
 </script>
 
 <style scoped>

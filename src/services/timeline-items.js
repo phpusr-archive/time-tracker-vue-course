@@ -1,10 +1,10 @@
-import { currentHour } from '../functions'
 import { ref } from 'vue'
+import { now } from '../time'
 
 export const timelineItemRefs = ref([])
 
 export function scrollToHour(hour = null, isSmooth = false) {
-  hour ??= currentHour()
+  hour ??= now.value.getHours()
 
   if (hour > 0) {
     const options = { behavior: isSmooth ? 'smooth' : 'instant' }

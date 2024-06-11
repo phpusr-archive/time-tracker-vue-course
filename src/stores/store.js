@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { currentHour, id } from '../functions'
+import { id } from '../functions'
 import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants'
+import { now } from '../time'
 
 const activities = generateActivities()
 
@@ -56,7 +57,7 @@ export const useAppStore = defineStore('app', {
       this.timelineItems.forEach(it => {
         if (it.activityId === activity.id) {
           it.activityId = null
-          if (it.hour !== currentHour()) {
+          if (it.hour !== now.value.getHours()) {
             it.activitySeconds = 0
           }
         }
