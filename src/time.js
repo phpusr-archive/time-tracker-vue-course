@@ -5,7 +5,9 @@ const TEST_SPEED_UP = 60
 
 let timer = null
 
-export const now = ref(new Date())
+const date = new Date()
+date.setHours(0, 0)
+export const now = ref(date)
 
 export const secondsSinceMidnightInPercentage = computed(() => {
   return secondsSinceMidnight.value / SECONDS_IN_DAY * 100

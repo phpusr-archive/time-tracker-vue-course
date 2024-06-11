@@ -1,11 +1,30 @@
-<script setup>
-
-</script>
-
 <template>
   <RouterView />
 </template>
 
-<style scoped>
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+import * as storage from './storage'
+import { useAppStore } from './stores/index'
 
-</style>
+const store = useAppStore()
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', handleVisibilitychange)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('visibilitychange', handleVisibilitychange)
+})
+
+function handleVisibilitychange() {
+  if (document.visibilityState === 'hidden') {
+    console.log('Save state')
+    storage.save({
+      timelineItems: store.timelineItems,
+      activities: store.activities
+    })
+  }
+}
+
+</script>
