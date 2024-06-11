@@ -9,6 +9,6 @@ export function load() {
 export function save(state) {
   localStorage.setItem(APP_NAME, JSON.stringify({
     ...state,
-    date: today().toISOString()
+    lastActiveAt: today().toISOString()
   }))
 }

@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue'
 import { MILLISECONDS_IN_SECOND, SECONDS_IN_DAY } from './constants'
 
-const TEST_SPEED_UP = 60
+const TEST_SPEED_UP = 1
 
 export function isToday(date) {
   return date.toDateString() === today().toDateString()
@@ -9,7 +9,6 @@ export function isToday(date) {
 
 export function today() {
   const date = new Date()
-  date.setHours(0, 0, 0, 0)
   return date
 }
 
