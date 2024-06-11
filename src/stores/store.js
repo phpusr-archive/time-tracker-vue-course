@@ -9,7 +9,7 @@ export const useAppStore = defineStore('app', {
   state: () => {
     return {
       activities,
-      timelineItems: generateTimelineItems(),
+      timelineItems: generateTimelineItems(activities),
     }
   },
   getters: {
@@ -34,7 +34,7 @@ export const useAppStore = defineStore('app', {
       this.timelineItems = timelineItems
     },
     resetTimelineItems() {
-      this.setTimelineItems(generateTimelineItems())
+      this.setTimelineItems(generateTimelineItems(this.activities))
     },
     addActivity(name) {
       this.activities.push({
@@ -92,6 +92,13 @@ export const useAppStore = defineStore('app', {
 
       timelineItem.activityId = activity?.id || null
     },
+    startActiveTimelineStopWatches() {
+      const timelineItem = this.timelineItems.find(it => it.stopwatch != null)
+      if (timelineItem) {
+        this.startTimelineStopWatch(timelineItem.hour)
+        console.log(`Timer ${timelineItem.hour} started`)
+      }
+    },
     startTimelineStopWatch(timelineId) {
       const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
       if (timelineItem) {
@@ -125,7 +132,7 @@ function generateActivities() {
   }))
 }
 
-function generateTimelineItems() {
+function generateTimelineItems(activities) {
   const timelineItems = []
   for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
     const randomActivityIndex = Math.round(Math.random() * (activities.length - 1))

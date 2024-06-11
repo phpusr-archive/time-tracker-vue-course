@@ -9,10 +9,12 @@ export function useAppState() {
   loadState()
 
   onMounted(() => {
+    console.log('App Mounted')
     document.addEventListener('visibilitychange', handleVisibilitychange)
   })
 
   onUnmounted(() => {
+    console.log('App Unmounted')
     document.removeEventListener('visibilitychange', handleVisibilitychange)
   })
 
