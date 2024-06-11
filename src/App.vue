@@ -6,6 +6,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import * as storage from './storage'
 import { useAppStore } from './stores/index'
+import { isToday } from './time'
 
 const store = useAppStore()
 
@@ -34,8 +35,12 @@ function saveState() {
 function loadState() {
   console.info('Load state')
   const state = storage.load()
-  store.setActivities(state.activities)
-  store.setTimelineItems(state.timelineItems)
+  if (state.activities) {
+    store.setActivities(state.activities)
+  }
+  if (state.timelineItems && isToday(new Date(state.date))) {
+    store.setTimelineItems(state.timelineItems)
+  }
 }
 
 </script>
