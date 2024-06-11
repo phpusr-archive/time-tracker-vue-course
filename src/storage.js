@@ -2,13 +2,13 @@ import { APP_NAME } from './constants'
 import { today } from './time'
 
 export function load() {
-  const state = localStorage.getItem(APP_NAME)
-  return state ? JSON.parse(state) : {}
+  const serializedState = localStorage.getItem(APP_NAME)
+  return serializedState ? JSON.parse(serializedState) : {}
 }
 
-export function save(data) {
+export function save(state) {
   localStorage.setItem(APP_NAME, JSON.stringify({
-    ...data,
+    ...state,
     date: today().toISOString()
   }))
 }
