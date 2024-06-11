@@ -24,6 +24,12 @@ export const useAppStore = defineStore('app', {
     }
   },
   actions: {
+    setActivities(activities) {
+      this.activities = activities
+    },
+    setTimelineItems(timelineItems) {
+      this.timelineItems = timelineItems
+    },
     addActivity(name) {
       this.activities.push({
         id: id(),

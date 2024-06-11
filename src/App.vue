@@ -9,6 +9,8 @@ import { useAppStore } from './stores/index'
 
 const store = useAppStore()
 
+loadState()
+
 onMounted(() => {
   document.addEventListener('visibilitychange', handleVisibilitychange)
 })
@@ -18,13 +20,22 @@ onUnmounted(() => {
 })
 
 function handleVisibilitychange() {
-  if (document.visibilityState === 'hidden') {
-    console.log('Save state')
-    storage.save({
-      timelineItems: store.timelineItems,
-      activities: store.activities
-    })
-  }
+  document.visibilityState === 'hidden' ? saveState() : loadState()
+}
+
+function saveState() {
+  console.info('Save state')
+  storage.save({
+    timelineItems: store.timelineItems,
+    activities: store.activities
+  })
+}
+
+function loadState() {
+  console.info('Load state')
+  const state = storage.load()
+  store.setActivities(state.activities)
+  store.setTimelineItems(state.timelineItems)
 }
 
 </script>
