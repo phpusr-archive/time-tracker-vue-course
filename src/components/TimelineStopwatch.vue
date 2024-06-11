@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, watchEffect } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { isTimelineItemValid } from '../validators'
@@ -57,8 +57,8 @@ const isStartDisabled = computed(() => {
   return timelineItem.hour !== now.value.getHours()
 })
 
-watch(isStartDisabled, (newValue) => {
-  if (newValue) {
+watchEffect(() => {
+  if (isStartDisabled.value) {
     store.stopTimelineStopWatch(timelineItem.hour)
   }
 })
