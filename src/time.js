@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue'
 import { MILLISECONDS_IN_SECOND, SECONDS_IN_DAY } from './constants'
 
-const TEST_SPEED_UP = 500
+const TEST_SPEED_UP = 60
 
 let timer = null
 

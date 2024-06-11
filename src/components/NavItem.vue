@@ -2,11 +2,9 @@
   <li class="flex-grow-1">
     <router-link
         :to="`/${navItem.action}`"
+        @click="handleClick"
         class="d-flex flex-column align-items-center p-2"
-        :class="{
-            'active-nav-item' : currentPage === navItem.action,
-            'pe-none':  currentPage === navItem.action,
-          }"
+        :class="{ 'active-nav-item' : currentPage === navItem.action }"
     >
       <BaseIcon :name="navItem.icon" class="nav-icon" />
       {{ navItem.title }}
@@ -19,6 +17,8 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 import { isNavItemValid } from '../validators'
+import { PAGE_TIMELINE } from '../constants'
+import { scrollToHour } from '../services/timeline-items'
 
 defineProps({
   navItem: {
@@ -29,7 +29,13 @@ defineProps({
 })
 
 const route = useRoute()
-const currentPage = computed(() => route.path.split('/')[1])
+const currentPage = computed(() => route.path.slice(1))
+
+function handleClick() {
+  if (route.path.slice(1) === PAGE_TIMELINE) {
+    scrollToHour(null, true)
+  }
+}
 </script>
 
 <style scoped>

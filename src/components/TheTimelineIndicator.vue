@@ -7,16 +7,10 @@
 </template>
 
 <script setup>
-import { computed, onUnmounted, ref } from 'vue'
-import { secondsSinceMidnightInPercentage, startTimer, stopTimer } from '../time'
+import { computed, ref } from 'vue'
+import { secondsSinceMidnightInPercentage } from '../time'
 
 const indicatorRef = ref()
-
-startTimer()
-
-onUnmounted(() => {
-  stopTimer()
-})
 
 const calculateTopOffset = computed(() => {
   return secondsSinceMidnightInPercentage.value / 100 * getTimelineHeight() - 18
