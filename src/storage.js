@@ -1,13 +1,13 @@
-import { APP_NAME } from './constants'
+import { LOCAL_STORAGE_KEY } from './constants'
 import { today } from './time'
 
 export function load() {
-  const serializedState = localStorage.getItem(APP_NAME)
+  const serializedState = localStorage.getItem(LOCAL_STORAGE_KEY)
   return serializedState ? JSON.parse(serializedState) : {}
 }
 
 export function save(state) {
-  localStorage.setItem(APP_NAME, JSON.stringify({
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
     ...state,
     lastActiveAt: today().toISOString()
   }))
