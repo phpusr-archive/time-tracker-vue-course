@@ -1,8 +1,8 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useAppStore } from '../stores/index'
 import * as storage from '../storage'
-import { isToday, today } from '../time'
-import { MILLISECONDS_IN_SECOND, SECONDS_IN_HOUR } from '../constants'
+import { endOfHour, isToday, today } from '../time'
+import { MILLISECONDS_IN_SECOND } from '../constants'
 
 export function useAppState() {
   const store = useAppStore()
@@ -53,17 +53,12 @@ function syncIdleSeconds(timelineItems, lastActiveAt) {
 }
 
 function calculateIdleSeconds(lastActiveAt) {
-  let idleMilliseconds = today() - lastActiveAt
-  if (lastActiveAt.getHours() !== today().getHours()) {
-    idleMilliseconds = getEndOfIdleHour(lastActiveAt) - lastActiveAt
+  let idleMilliseconds
+  if (lastActiveAt.getHours() === today().getHours()) {
+    idleMilliseconds = today() - lastActiveAt
+  } else {
+    idleMilliseconds = endOfHour(lastActiveAt) - lastActiveAt
   }
 
   return Math.round(idleMilliseconds / MILLISECONDS_IN_SECOND)
-}
-
-function getEndOfIdleHour(lastActiveAt) {
-  const endOfIdleHour = new Date(lastActiveAt)
-  endOfIdleHour.setTime(endOfIdleHour.getTime() + SECONDS_IN_HOUR * MILLISECONDS_IN_SECOND)
-  endOfIdleHour.setMinutes(0, 0, 0)
-  return endOfIdleHour
 }

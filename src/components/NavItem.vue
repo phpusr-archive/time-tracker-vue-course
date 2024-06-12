@@ -4,7 +4,7 @@
         :to="`/${navItem.action}`"
         @click="handleClick"
         class="d-flex flex-column align-items-center p-2"
-        :class="{ 'active-nav-item' : currentPage === navItem.action }"
+        :class="currentPage === navItem.action ? 'active-nav-item' : 'nav-item'"
     >
       <BaseIcon :name="navItem.icon" class="nav-icon" />
       {{ navItem.title }}
@@ -43,6 +43,13 @@ li a {
   color: black;
   text-decoration: none;
 }
+
+/*noinspection CssUnusedSymbol*/
+.nav-item:hover {
+  background: #f8fbff;
+}
+
+/*noinspection CssUnusedSymbol*/
 .active-nav-item {
   background: #e9ecef;
 }

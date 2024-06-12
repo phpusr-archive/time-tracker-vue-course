@@ -3,13 +3,13 @@ import { id } from '../functions'
 import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants'
 import { now } from '../time'
 
-const activities = generateActivities()
+const activities = []
 
 export const useAppStore = defineStore('app', {
   state: () => {
     return {
       activities,
-      timelineItems: generateTimelineItems(activities),
+      timelineItems: [],
     }
   },
   getters: {
