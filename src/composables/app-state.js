@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted } from 'vue'
-import { useAppStore } from '../stores/index'
+import { useAppStore } from '../stores'
 import * as storage from '../storage'
 import { endOfHour, isToday, today } from '../time'
 import { MILLISECONDS_IN_SECOND } from '../constants'

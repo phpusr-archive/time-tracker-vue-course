@@ -9,7 +9,7 @@
 import { computed } from 'vue'
 import { formatSecondsWithSign } from '../functions'
 import { isActivityValid } from '../validators'
-import { useAppStore } from '../stores/index'
+import { useAppStore } from '../stores'
 
 const { activity } = defineProps({
   activity: {

@@ -4,7 +4,7 @@
 
 <script setup>
 import BaseButton from './BaseButton.vue'
-import { useAppStore } from '../stores/index'
+import { useAppStore } from '../stores'
 
 const store = useAppStore()
 
