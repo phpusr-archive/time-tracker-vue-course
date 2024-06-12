@@ -41,6 +41,8 @@ export function useAppState() {
     if (state.timelineItems && isToday(lastActiveAt)) {
       store.setTimelineItems(syncIdleSeconds(state.timelineItems, lastActiveAt))
     }
+
+    store.startActiveTimelineStopWatches()
   }
 }
 
