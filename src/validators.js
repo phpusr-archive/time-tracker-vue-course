@@ -1,10 +1,6 @@
 import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
 import { ICONS } from './services/icons'
 
-export function isPageValid(page) {
-  return NAV_ITEMS.some(it => it.action === page)
-}
-
 export function isNavItemValid(navItem) {
   return NAV_ITEMS.includes(navItem)
 }
@@ -63,8 +59,4 @@ export function isString(value) {
 
 export function isUndefinedOrNull(value) {
   return value == null
-}
-
-export function isUndefined(value) {
-  return value === undefined
 }
