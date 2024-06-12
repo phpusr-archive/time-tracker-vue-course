@@ -11,7 +11,7 @@
     </div>
   </router-link>
 </template>
-<script setup lang="ts">
+<script setup>
 import BaseIcon from './BaseIcon.vue'
 import { PAGE_DAY_COMPLETE } from '../constants'
 import { ICON_CHECK_CIRCLE_SOLID } from '../services/icons'

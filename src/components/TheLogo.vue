@@ -4,7 +4,7 @@
     <h1 class="ms-2 text-nowrap m-0">TimeTracker</h1>
   </a>
 </template>
-<script setup lang="ts">
+<script setup>
 import { useRoute, useRouter } from 'vue-router'
 import BaseIcon from './BaseIcon.vue'
 import { PAGE_TIMELINE } from '../constants'
