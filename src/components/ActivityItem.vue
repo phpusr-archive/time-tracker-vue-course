@@ -12,7 +12,7 @@
           placeholder="hh:mm"
           :selected="activity.secondsToComplete || null"
           :options="PERIOD_SELECT_OPTIONS"
-          @select="updateSecondsToComplete($event as any)"
+          @select="updateSecondsToComplete"
       />
       <RemainingActivitySeconds v-if="activity.secondsToComplete > 0" :activity="activity" />
     </div>
@@ -34,7 +34,9 @@ const { activity } = defineProps<{
 
 const store = useAppStore()
 
-function updateSecondsToComplete(secondsToComplete: number) {
-  store.setActivitySecondsToComplete(activity.id, secondsToComplete)
+function updateSecondsToComplete(secondsToComplete: number | null): void {
+  if (secondsToComplete != null) {
+    store.setActivitySecondsToComplete(activity.id, secondsToComplete)
+  }
 }
 </script>

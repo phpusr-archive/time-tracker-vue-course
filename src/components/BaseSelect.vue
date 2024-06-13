@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends number | string">
 import { computed } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
@@ -23,16 +23,16 @@ import { isUndefinedOrNull } from '../validators'
 import { normalizeSelectValue } from '../functions'
 import { NEUTRAL_BUTTON_TYPE } from '../constants'
 import { ICON_X_MARK } from '../services/icons'
-import { SelectOption } from '../types'
+import type { SelectOption } from '../types'
 
 const props = defineProps<{
-  selected: string | number | null
-  options: SelectOption<number | string>[]
+  options: SelectOption<T>[]
+  selected: T | null
   placeholder: string
 }>()
 
 const emit = defineEmits<{
-  select: [value: number | string | null]
+  select: [value: T | null]
 }>()
 
 const isNotSelected = computed((): boolean => isUndefinedOrNull(props.selected))
