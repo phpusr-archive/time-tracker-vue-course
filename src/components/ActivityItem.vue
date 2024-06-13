@@ -10,7 +10,7 @@
       <BaseSelect
           class="font-monospace flex-grow-1"
           placeholder="hh:mm"
-          :selected="activity.secondsToComplete || null"
+          :selected="(activity.secondsToComplete || null) as any"
           :options="PERIOD_SELECT_OPTIONS"
           @select="updateSecondsToComplete"
       />
@@ -18,27 +18,23 @@
     </div>
   </li>
 </template>
-<script setup>
+<script setup lang="ts">
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import BaseIcon from './BaseIcon.vue'
-import { isActivityValid } from '../validators'
 import { DANGER_BUTTON_TYPE, PERIOD_SELECT_OPTIONS } from '../constants'
 import { useAppStore } from '../stores'
 import { ICON_TRASH } from '../services/icons'
+import type { Activity } from '../types'
 
-const { activity } = defineProps({
-  activity: {
-    type: Object,
-    required: true,
-    validator: isActivityValid
-  }
-})
+const { activity } = defineProps<{
+  activity: Activity
+}>()
 
 const store = useAppStore()
 
-function updateSecondsToComplete(secondsToComplete) {
+function updateSecondsToComplete(secondsToComplete: number) {
   store.setActivitySecondsToComplete(activity.id, secondsToComplete)
 }
 </script>
