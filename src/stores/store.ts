@@ -2,29 +2,7 @@ import { defineStore } from 'pinia'
 import { id } from '../functions'
 import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants'
 import { now } from '../time'
-
-interface AppState {
-  activities: Activity[]
-  timelineItems: TimelineItem[]
-}
-
-interface Activity {
-  id: string
-  name: string
-  secondsToComplete: number
-}
-
-interface ActivitySelectOption {
-  label: string
-  value: string
-}
-
-interface TimelineItem {
-  hour: number
-  activityId: string | null
-  activitySeconds: number
-  stopwatch: number | null
-}
+import { Activity, ActivitySelectOption, AppState, TimelineItem } from '../models'
 
 const activities: Activity[] = []
 
