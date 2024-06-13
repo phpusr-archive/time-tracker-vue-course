@@ -1,9 +1,5 @@
-import { MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
+import { MAX_HOUR, MIN_HOUR } from './constants'
 import { ICONS } from './services/icons'
-
-export function isNavItemValid(navItem: any): boolean {
-  return NAV_ITEMS.includes(navItem)
-}
 
 export function isTimelineItemValid({ hour }: any): boolean {
   return isHourValid(hour)

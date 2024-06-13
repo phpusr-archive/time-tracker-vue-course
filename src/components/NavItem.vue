@@ -12,26 +12,22 @@
   </li>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
-import { isNavItemValid } from '../validators'
 import { PAGE_TIMELINE } from '../constants'
 import { scrollToHour } from '../services/timeline-items'
+import type { NavItem } from '../types'
 
-defineProps({
-  navItem: {
-    required: true,
-    type: Object,
-    validator: isNavItemValid
-  }
-})
+defineProps<{
+  navItem: NavItem
+}>()
 
 const route = useRoute()
-const currentPage = computed(() => route.path.slice(1))
+const currentPage = computed((): string => route.path.slice(1))
 
-function handleClick() {
+function handleClick(): void {
   if (route.path.slice(1) === PAGE_TIMELINE) {
     scrollToHour(null, true)
   }
