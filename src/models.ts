@@ -30,6 +30,11 @@ export interface ActivitySelectOption {
   value: string
 }
 
+export interface PeriodSelectOption {
+  label: string
+  value: number
+}
+
 export interface TimelineItem {
   hour: number
   activityId: string | null
@@ -41,4 +46,11 @@ export interface NavItem {
   title: string
   action: PageName
   icon: any
+}
+
+export enum ProgressColorClass {
+  RED = 'bg-red-500',
+  YELLOW = 'bg-yellow-500',
+  BLUE = 'bg-blue-500',
+  GREEN = 'bg-green-500'
 }
