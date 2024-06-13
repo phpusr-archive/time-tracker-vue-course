@@ -1,11 +1,16 @@
 import { useAppStore } from '../stores'
-import { computed } from 'vue'
+import { computed, type ComputedRef } from 'vue'
 import { getProgressColorClass } from '../functions'
+import type { ProgressColorClass } from '../enums'
 
-export function useTotalProgress() {
+export function useTotalProgress(): {
+  percentage: ComputedRef<number>,
+  colorClass: ComputedRef<ProgressColorClass>,
+  dayComplete: ComputedRef<boolean>
+} {
   const store = useAppStore()
 
-  const percentage = computed(() => {
+  const percentage = computed<number>(() => {
     const totalTrackedSeconds = store.trackedActivities.map(activity => {
       const trackedSeconds = store.calculateTrackedActivitySeconds(activity.id)
       return Math.min(trackedSeconds, activity.secondsToComplete)
@@ -14,7 +19,7 @@ export function useTotalProgress() {
     return store.calculateCompletionPercentage(totalTrackedSeconds)
   })
 
-  const colorClass = computed(() => {
+  const colorClass = computed<ProgressColorClass>(() => {
     return getProgressColorClass(percentage.value)
   })
 
