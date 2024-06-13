@@ -1,4 +1,4 @@
-import { BUTTON_TYPES, MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
+import { MAX_HOUR, MIN_HOUR, NAV_ITEMS } from './constants'
 import { ICONS } from './services/icons'
 
 export function isNavItemValid(navItem: any): boolean {
@@ -21,10 +21,6 @@ export function isHourValid(hour: any): boolean {
 
 export function isActivityValid({ id, name, secondsToComplete }: any) {
   return isNotEmptyString(id) && isNotEmptyString(name) && isNumber(secondsToComplete)
-}
-
-export function isButtonTypeValid(value: any): boolean {
-  return BUTTON_TYPES.includes(value)
 }
 
 export function isSelectValueValid(value: any): boolean {
