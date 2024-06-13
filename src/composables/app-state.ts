@@ -5,17 +5,17 @@ import { endOfHour, isToday, today } from '../services/time'
 import { MILLISECONDS_IN_SECOND } from '../constants'
 import type { TimelineItem } from '../types'
 
-export function useAppState() {
+export function useAppState(): void {
   const store = useAppStore()
 
   loadState()
 
-  onMounted(() => {
+  onMounted((): void => {
     console.log('App Mounted')
     document.addEventListener('visibilitychange', handleVisibilitychange)
   })
 
-  onUnmounted(() => {
+  onUnmounted((): void => {
     console.log('App Unmounted')
     document.removeEventListener('visibilitychange', handleVisibilitychange)
   })
@@ -24,7 +24,7 @@ export function useAppState() {
     document.visibilityState === 'hidden' ? saveState() : loadState()
   }
 
-  function saveState() {
+  function saveState(): void {
     console.info('Save state')
     storage.save({
       timelineItems: store.timelineItems,
@@ -32,7 +32,7 @@ export function useAppState() {
     })
   }
 
-  function loadState() {
+  function loadState(): void {
     console.info('Load state')
     const state = storage.load()
     if (state.activities) {

@@ -13,8 +13,8 @@ const midnight = computed<number>(() => {
   return new Date(now.value).setHours(0, 0, 0, 0)
 })
 
-const secondsSinceMidnight = computed(() => {
-  return (now.value as any - midnight.value) / MILLISECONDS_IN_SECOND
+const secondsSinceMidnight = computed<number>(() => {
+  return (now.value.getTime() - midnight.value) / MILLISECONDS_IN_SECOND
 })
 
 export function isToday(date: Date): boolean {

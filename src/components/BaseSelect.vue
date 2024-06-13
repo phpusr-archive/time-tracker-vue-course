@@ -33,6 +33,6 @@ const emit = defineEmits<{
 }>()
 
 function select(value: string | null): void {
-  emit('select', normalizeSelectValue(value))
+  emit('select', normalizeSelectValue(value) as T | null)
 }
 </script>
