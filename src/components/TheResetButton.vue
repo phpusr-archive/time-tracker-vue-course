@@ -1,10 +1,11 @@
 <template>
-  <BaseButton type="neutral" @click="resetState">Reset</BaseButton>
+  <BaseButton :type="ButtonType.NEUTRAL" @click="resetState">Reset</BaseButton>
 </template>
 
 <script setup lang="ts">
 import BaseButton from './BaseButton.vue'
 import { useAppStore } from '../stores'
+import { ButtonType } from '../enums'
 
 const store = useAppStore()
 

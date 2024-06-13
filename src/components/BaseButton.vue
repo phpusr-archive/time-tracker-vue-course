@@ -5,28 +5,20 @@
 </template>
 
 <script lang="ts">
-import {
-  DANGER_BUTTON_TYPE,
-  NEUTRAL_BUTTON_TYPE,
-  PRIMARY_BUTTON_TYPE,
-  SUCCESS_BUTTON_TYPE,
-  WARNING_BUTTON_TYPE
-} from '../constants'
-import type { ButtonType } from '../types'
+import { ButtonType } from '../enums'
 
 const typeClasses: Record<ButtonType, string> = {
-  [PRIMARY_BUTTON_TYPE]: 'btn-primary',
-  [SUCCESS_BUTTON_TYPE]: 'btn-success',
-  [WARNING_BUTTON_TYPE]: 'btn-warning',
-  [NEUTRAL_BUTTON_TYPE]: 'btn-neutral',
-  [DANGER_BUTTON_TYPE]: 'btn-danger'
+  [ButtonType.PRIMARY]: 'btn-primary',
+  [ButtonType.SUCCESS]: 'btn-success',
+  [ButtonType.WARNING]: 'btn-warning',
+  [ButtonType.NEUTRAL]: 'btn-neutral',
+  [ButtonType.DANGER]: 'btn-danger'
 }
 </script>
 
 <script setup lang="ts">
-
 const props = withDefaults(defineProps<{ type?: ButtonType }>(), {
-  type: PRIMARY_BUTTON_TYPE
+  type: ButtonType.PRIMARY
 })
 
 const classes = ['btn', typeClasses[props.type]]

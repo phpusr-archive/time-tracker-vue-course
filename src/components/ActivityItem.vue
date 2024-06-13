@@ -1,7 +1,7 @@
 <template>
   <li class="d-flex flex-column p-3 divide-y">
     <div class="d-flex align-items-center">
-      <BaseButton :type="DANGER_BUTTON_TYPE" @click="store.deleteActivity(activity)">
+      <BaseButton :type="ButtonType.DANGER" @click="store.deleteActivity(activity)">
         <BaseIcon :name="IconName.TRASH" />
       </BaseButton>
       <div class="ms-2 text-truncate fs-3">{{ activity.name }}</div>
@@ -23,10 +23,10 @@ import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import BaseIcon from './BaseIcon.vue'
-import { DANGER_BUTTON_TYPE, PERIOD_SELECT_OPTIONS } from '../constants'
+import { PERIOD_SELECT_OPTIONS } from '../constants'
 import { useAppStore } from '../stores'
 import type { Activity } from '../types'
-import { IconName } from '../enums'
+import { ButtonType, IconName } from '../enums'
 
 const { activity } = defineProps<{
   activity: Activity

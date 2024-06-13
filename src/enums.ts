@@ -25,3 +25,11 @@ export enum IconName {
   CLOCK_SOLID = 'ClockSolid',
   CHECK_CIRCLE_SOLID = 'CheckCircleSolid'
 }
+
+export enum ButtonType {
+  PRIMARY = 'primary',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  NEUTRAL = 'neutral',
+  DANGER = 'danger'
+}

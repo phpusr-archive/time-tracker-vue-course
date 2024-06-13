@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-    <BaseButton :type="NEUTRAL_BUTTON_TYPE" @click="select(null)">
+    <BaseButton :type="ButtonType.NEUTRAL" @click="select(null)">
       <BaseIcon :name="IconName.X_MARK" />
     </BaseButton>
     <select
@@ -19,9 +19,8 @@
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { normalizeSelectValue } from '../functions'
-import { NEUTRAL_BUTTON_TYPE } from '../constants'
 import type { SelectOption } from '../types'
-import { IconName } from '../enums'
+import { ButtonType, IconName } from '../enums'
 
 defineProps<{
   options: SelectOption<T>[]

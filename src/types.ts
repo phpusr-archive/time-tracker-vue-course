@@ -1,13 +1,4 @@
-import {
-  DANGER_BUTTON_TYPE,
-  NEUTRAL_BUTTON_TYPE,
-  PRIMARY_BUTTON_TYPE,
-  SUCCESS_BUTTON_TYPE,
-  WARNING_BUTTON_TYPE
-} from './constants'
 import type { IconName, PageName } from './enums'
-
-export type ButtonType = typeof PRIMARY_BUTTON_TYPE | typeof SUCCESS_BUTTON_TYPE | typeof WARNING_BUTTON_TYPE | typeof NEUTRAL_BUTTON_TYPE | typeof DANGER_BUTTON_TYPE
 
 export type Hour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
 

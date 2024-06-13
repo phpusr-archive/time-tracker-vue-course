@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-items-center mt-2">
     <BaseButton
-        type="danger"
+        :type="ButtonType.DANGER"
         :disabled="timelineItem.activitySeconds === 0"
         @click="store.stopTimelineStopWatch(timelineItem.hour, true)"
     >
@@ -15,7 +15,7 @@
 
     <BaseButton
         v-if="!store.isRunningTimelineStopWatch(timelineItem.hour)"
-        type="success"
+        :type="ButtonType.SUCCESS"
         :disabled="isStartDisabled"
         @click="store.startTimelineStopWatch(timelineItem.hour)"
     >
@@ -24,7 +24,7 @@
 
     <BaseButton
         v-else
-        type="warning"
+        :type="ButtonType.WARNING"
         @click="store.stopTimelineStopWatch(timelineItem.hour)"
     >
       <BaseIcon :name="IconName.PAUSE" />
@@ -41,7 +41,7 @@ import { useAppStore } from '../stores'
 import { formatSeconds } from '../functions'
 import { now } from '../services/time'
 import type { TimelineItem } from '../types'
-import { IconName } from '../enums'
+import { ButtonType, IconName } from '../enums'
 
 const { timelineItem } = defineProps<{ timelineItem: TimelineItem }>()
 
