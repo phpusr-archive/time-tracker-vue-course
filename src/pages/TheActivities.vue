@@ -9,7 +9,7 @@
     <TheActivityForm />
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import ActivityItem from '../components/ActivityItem.vue'
 import { useAppStore } from '../stores'
 import TheActivityForm from '../components/TheActivityForm.vue'

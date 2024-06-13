@@ -15,27 +15,23 @@
   </li>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
-import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
+import type { Activity, TimelineItem } from '../types'
 
-const { timelineItem } = defineProps({
-  timelineItem: {
-    required: true,
-    type: Object,
-    validator: isTimelineItemValid
-  }
-})
+const { timelineItem } = defineProps<{ timelineItem: TimelineItem }>()
 
 const store = useAppStore()
 
 const options = store.activitySelectOptions
 
-function selectActivity(activityId) {
-  store.setTimelineItemActivity(timelineItem.hour, activityId)
+function selectActivity(activityId: Activity['id'] | null): void {
+  if (activityId) {
+    store.setTimelineItemActivity(timelineItem.hour, activityId)
+  }
 }
 </script>
 

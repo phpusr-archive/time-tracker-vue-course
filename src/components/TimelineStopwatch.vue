@@ -33,31 +33,25 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, watchEffect } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
 import { formatSeconds } from '../functions'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../services/icons'
 import { now } from '../services/time'
+import type { TimelineItem } from '../types'
 
-const { timelineItem } = defineProps({
-  timelineItem: {
-    required: true,
-    type: Object,
-    validator: isTimelineItemValid
-  }
-})
+const { timelineItem } = defineProps<{ timelineItem: TimelineItem }>()
 
 const store = useAppStore()
 
-const isStartDisabled = computed(() => {
+const isStartDisabled = computed<boolean>(() => {
   return timelineItem.hour !== now.value.getHours()
 })
 
-watchEffect(() => {
+watchEffect((): void => {
   if (isStartDisabled.value) {
     store.stopTimelineStopWatch(timelineItem.hour)
   }

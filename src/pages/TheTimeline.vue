@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 import TimelineItem from '../components/TimelineItem.vue'
 import TheTimelineIndicator from '../components/TheTimelineIndicator.vue'

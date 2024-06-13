@@ -83,7 +83,7 @@ export const useAppStore = defineStore('app', {
         activity.secondsToComplete = secondsToComplete || 0
       }
     },
-    setTimelineItemActivity(hour: number, activityId: String): void {
+    setTimelineItemActivity(hour: number, activityId: string): void {
       const timelineItem = this.timelineItems.find((it: TimelineItem) => it.hour === hour)
       if (!timelineItem) {
         return
