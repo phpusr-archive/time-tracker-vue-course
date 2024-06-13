@@ -2,13 +2,13 @@
   <BaseButton type="neutral" @click="resetState">Reset</BaseButton>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BaseButton from './BaseButton.vue'
 import { useAppStore } from '../stores'
 
 const store = useAppStore()
 
-function resetState() {
+function resetState(): void {
   store.resetActivities()
   store.resetTimelineItems()
 }

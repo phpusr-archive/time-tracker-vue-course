@@ -6,18 +6,18 @@
   >
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref } from 'vue'
 import { secondsSinceMidnightInPercentage } from '../services/time'
 
-const indicatorRef = ref()
+const indicatorRef = ref<HTMLHRElement | null>(null)
 
-const calculateTopOffset = computed(() => {
+const calculateTopOffset = computed((): number => {
   return secondsSinceMidnightInPercentage.value / 100 * getTimelineHeight() - 18
 })
 
-function getTimelineHeight() {
-  return indicatorRef.value?.parentNode.getBoundingClientRect().height
+function getTimelineHeight(): number {
+  return indicatorRef.value?.parentElement?.getBoundingClientRect().height || 0
 }
 </script>
 
