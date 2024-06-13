@@ -15,7 +15,7 @@ export const useAppStore = defineStore('app', {
   },
   getters: {
     trackedActivities: (state): Activity[] => {
-      return state.activities.filter(it => it.secondsToComplete > 0)
+      return state.activities.filter((it: Activity) => it.secondsToComplete > 0)
     },
     activitySelectOptions: (state): ActivitySelectOption[] => {
       return state.activities.map(({ id, name }) => ({ label: name, value: id }))
@@ -45,7 +45,7 @@ export const useAppStore = defineStore('app', {
       })
     },
     calculateTrackedActivitySeconds(activityId: string): number {
-      return this.timelineItems.reduce((acc, it) => {
+      return this.timelineItems.reduce((acc: number, it: TimelineItem) => {
         if (it.activityId === activityId) {
           return acc + it.activitySeconds
         }
@@ -67,7 +67,7 @@ export const useAppStore = defineStore('app', {
       return Math.round(totalTrackedSeconds / this.totalActivitySecondsToComplete * 100)
     },
     deleteActivity(activity: Activity): void {
-      this.timelineItems.forEach(it => {
+      this.timelineItems.forEach((it: TimelineItem) => {
         if (it.activityId === activity.id) {
           it.activityId = null
           if (it.hour !== now.value.getHours()) {
@@ -75,33 +75,33 @@ export const useAppStore = defineStore('app', {
           }
         }
       })
-      this.activities = this.activities.filter(it => it !== activity)
+      this.activities = this.activities.filter((it: Activity) => it !== activity)
     },
     setActivitySecondsToComplete(activityId: string, secondsToComplete: number): void {
-      const activity = this.activities.find(it => it.id === activityId)
+      const activity = this.activities.find((it: Activity) => it.id === activityId)
       if (activity) {
         activity.secondsToComplete = secondsToComplete || 0
       }
     },
     setTimelineItemActivity(hour: number, activityId: String): void {
-      const timelineItem = this.timelineItems.find(it => it.hour === hour)
+      const timelineItem = this.timelineItems.find((it: TimelineItem) => it.hour === hour)
       if (!timelineItem) {
         return
       }
 
-      const activity = this.activities.find(it => it.id === activityId)
+      const activity = this.activities.find((it: Activity) => it.id === activityId)
 
       timelineItem.activityId = activity?.id || null
     },
     startActiveTimelineStopWatches(): void {
-      const timelineItem = this.timelineItems.find(it => it.stopwatch != null)
+      const timelineItem = this.timelineItems.find((it: TimelineItem) => it.stopwatch != null)
       if (timelineItem) {
         this.startTimelineStopWatch(timelineItem.hour)
         console.log(`Timer ${timelineItem.hour} started`)
       }
     },
     startTimelineStopWatch(timelineId: number): void {
-      const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
+      const timelineItem = this.timelineItems.find((it: TimelineItem) => it.hour === timelineId)
       if (timelineItem) {
         timelineItem.stopwatch = setInterval(() => {
           timelineItem.activitySeconds++
@@ -109,7 +109,7 @@ export const useAppStore = defineStore('app', {
       }
     },
     stopTimelineStopWatch(timelineId: number, reset: boolean = false): void {
-      const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
+      const timelineItem = this.timelineItems.find((it: TimelineItem) => it.hour === timelineId)
       if (timelineItem) {
         if (timelineItem.stopwatch) {
           clearInterval(timelineItem.stopwatch)
@@ -121,7 +121,7 @@ export const useAppStore = defineStore('app', {
       }
     },
     isRunningTimelineStopWatch(timelineId: number): boolean {
-      const timelineItem = this.timelineItems.find(it => it.hour === timelineId)
+      const timelineItem = this.timelineItems.find((it: TimelineItem) => it.hour === timelineId)
       return !!timelineItem?.stopwatch
     }
   }
