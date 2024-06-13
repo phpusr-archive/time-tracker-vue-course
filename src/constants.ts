@@ -1,6 +1,7 @@
 import { generatePeriodSelectOptions } from './functions'
 import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from './services/icons'
-import { ButtonType, NavItem } from './models'
+import { NavItem } from './models'
+import type { ButtonType } from './types'
 
 export const LOCAL_STORAGE_KEY = 'time-tracker'
 

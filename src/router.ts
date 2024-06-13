@@ -1,10 +1,10 @@
+import { createRouter, createWebHashHistory } from 'vue-router'
 import TheLayout from './components/TheLayout.vue'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheDayComplete from './pages/TheDayComplete.vue'
-import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_DAY_COMPLETE } from './constants'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { PAGE_ACTIVITIES, PAGE_DAY_COMPLETE, PAGE_PROGRESS, PAGE_TIMELINE } from './constants'
 
 
 export default createRouter({
