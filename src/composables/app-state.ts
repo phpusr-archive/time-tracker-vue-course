@@ -3,6 +3,7 @@ import { useAppStore } from '../stores'
 import * as storage from '../services/storage'
 import { endOfHour, isToday, today } from '../services/time'
 import { MILLISECONDS_IN_SECOND } from '../constants'
+import type { TimelineItem } from '../types'
 
 export function useAppState() {
   const store = useAppStore()
@@ -37,7 +38,7 @@ export function useAppState() {
     if (state.activities) {
       store.setActivities(state.activities)
     }
-    const lastActiveAt = new Date(state.lastActiveAt)
+    const lastActiveAt = state.lastActiveAt ? new Date(state.lastActiveAt) : new Date()
     if (state.timelineItems && isToday(lastActiveAt)) {
       store.setTimelineItems(syncIdleSeconds(state.timelineItems, lastActiveAt))
     }
@@ -46,7 +47,7 @@ export function useAppState() {
   }
 }
 
-function syncIdleSeconds(timelineItems, lastActiveAt) {
+function syncIdleSeconds(timelineItems: TimelineItem[], lastActiveAt: Date): TimelineItem[] {
   const timelineItem = timelineItems.find(it => it.stopwatch != null)
   if (timelineItem) {
     timelineItem.activitySeconds += calculateIdleSeconds(lastActiveAt)
@@ -54,12 +55,12 @@ function syncIdleSeconds(timelineItems, lastActiveAt) {
   return timelineItems
 }
 
-function calculateIdleSeconds(lastActiveAt) {
+function calculateIdleSeconds(lastActiveAt: Date): number {
   let idleMilliseconds
   if (lastActiveAt.getHours() === today().getHours()) {
-    idleMilliseconds = today() - lastActiveAt
+    idleMilliseconds = today().getTime() - lastActiveAt.getTime()
   } else {
-    idleMilliseconds = endOfHour(lastActiveAt) - lastActiveAt
+    idleMilliseconds = endOfHour(lastActiveAt).getTime() - lastActiveAt.getTime()
   }
 
   return Math.round(idleMilliseconds / MILLISECONDS_IN_SECOND)
