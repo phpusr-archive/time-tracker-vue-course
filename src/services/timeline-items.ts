@@ -1,9 +1,9 @@
 import { ref } from 'vue'
 import { now } from './time'
 
-export const timelineItemRefs = ref([])
+export const timelineItemRefs = ref<any>([])
 
-export function scrollToHour(hour = null, isSmooth = false) {
+export function scrollToHour(hour: number|null = null, isSmooth: boolean = false): void {
   hour ??= now.value.getHours()
 
   if (hour > 0) {
