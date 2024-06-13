@@ -5,7 +5,7 @@
     </BaseButton>
     <select
         class="ms-2 form-select text-truncate bg-gray-100 fs-3"
-        @change="select($event.target.value)"
+        @change="select(($event.target as HTMLSelectElement).value)"
     >
       <option :selected="isNotSelected" disabled value="">{{ placeholder }}</option>
       <option v-for="{ value, label } in options" :key="value" :value="value" :selected="value === selected">
@@ -15,33 +15,29 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { isSelectOptionsValid, isSelectValueValid, isUndefinedOrNull } from '../validators'
+import { isUndefinedOrNull } from '../validators'
 import { normalizeSelectValue } from '../functions'
 import { NEUTRAL_BUTTON_TYPE } from '../constants'
 import { ICON_X_MARK } from '../services/icons'
+import { SelectOption } from '../types'
 
-const props = defineProps({
-  selected: [String, Number],
-  options: {
-    required: true,
-    type: Array,
-    validator: isSelectOptionsValid
-  },
-  placeholder: {
-    required: true,
-    type: String
-  }
-})
+const props = defineProps<{
+  selected: string | number | null
+  options: SelectOption<number | string>[]
+  placeholder: string
+}>()
 
-const emit = defineEmits({ select: isSelectValueValid })
+const emit = defineEmits<{
+  select: [value: number | string | null]
+}>()
 
-const isNotSelected = computed(() => isUndefinedOrNull(props.selected))
+const isNotSelected = computed((): boolean => isUndefinedOrNull(props.selected))
 
-function select(value) {
+function select(value: string | null): void {
   emit('select', normalizeSelectValue(value))
 }
 </script>

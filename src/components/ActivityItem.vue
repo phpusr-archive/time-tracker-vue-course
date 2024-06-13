@@ -10,9 +10,9 @@
       <BaseSelect
           class="font-monospace flex-grow-1"
           placeholder="hh:mm"
-          :selected="(activity.secondsToComplete || null) as any"
+          :selected="activity.secondsToComplete || null"
           :options="PERIOD_SELECT_OPTIONS"
-          @select="updateSecondsToComplete"
+          @select="updateSecondsToComplete($event as any)"
       />
       <RemainingActivitySeconds v-if="activity.secondsToComplete > 0" :activity="activity" />
     </div>

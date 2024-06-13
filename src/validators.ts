@@ -5,12 +5,6 @@ export function isNavItemValid(navItem: any): boolean {
   return NAV_ITEMS.includes(navItem)
 }
 
-export function isSelectOptionsValid(options: any): boolean {
-  return options.every(({ value, label }: any) =>
-    (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
-  )
-}
-
 export function isTimelineItemValid({ hour }: any): boolean {
   return isHourValid(hour)
 }
