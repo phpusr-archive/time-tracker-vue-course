@@ -1,3 +1,10 @@
+export enum PageName {
+  TIMELINE = 'timeline',
+  ACTIVITIES = 'activities',
+  PROGRESS = 'progress',
+  DAY_COMPLETE = 'day-complete'
+}
+
 export enum ProgressColorClass {
   RED = 'bg-red-500',
   YELLOW = 'bg-yellow-500',

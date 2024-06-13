@@ -7,18 +7,17 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import BaseIcon from './BaseIcon.vue'
-import { PAGE_TIMELINE } from '../constants'
 import { scrollToHour } from '../services/timeline-items'
-import { IconName } from '../enums'
+import { IconName, PageName } from '../enums'
 
 const router = useRouter()
 const route = useRoute()
 
 function handleClick(): void {
-  if (route.path.slice(1) === PAGE_TIMELINE) {
+  if (route.path.slice(1) === PageName.TIMELINE) {
     scrollToHour(null, true)
   } else {
-    router.push('/' + PAGE_TIMELINE)
+    router.push('/' + PageName.TIMELINE)
   }
 }
 </script>

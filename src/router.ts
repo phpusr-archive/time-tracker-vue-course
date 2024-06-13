@@ -4,7 +4,7 @@ import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheDayComplete from './pages/TheDayComplete.vue'
-import { PAGE_ACTIVITIES, PAGE_DAY_COMPLETE, PAGE_PROGRESS, PAGE_TIMELINE } from './constants'
+import { PageName } from './enums'
 
 
 export default createRouter({
@@ -16,27 +16,27 @@ export default createRouter({
       children: [
         {
           path: '',
-          redirect: `/${PAGE_TIMELINE}`,
+          redirect: `/${PageName.TIMELINE}`,
         },
         {
-          path: PAGE_TIMELINE,
+          path: PageName.TIMELINE,
           component: TheTimeline
         },
         {
-          path: PAGE_ACTIVITIES,
+          path: PageName.ACTIVITIES,
           component: TheActivities
         },
         {
-          path: PAGE_PROGRESS,
+          path: PageName.PROGRESS,
           component: TheProgress
         },
         {
-          path: PAGE_DAY_COMPLETE,
+          path: PageName.DAY_COMPLETE,
           component: TheDayComplete
         },
         {
           path: ':pathMatch(.*)*',
-          redirect: `/${PAGE_TIMELINE}`
+          redirect: `/${PageName.TIMELINE}`
         }
       ]
     }

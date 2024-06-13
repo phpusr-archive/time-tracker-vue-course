@@ -16,9 +16,9 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
-import { PAGE_TIMELINE } from '../constants'
 import { scrollToHour } from '../services/timeline-items'
 import type { NavItem } from '../types'
+import { PageName } from '../enums'
 
 defineProps<{
   navItem: NavItem
@@ -28,7 +28,7 @@ const route = useRoute()
 const currentPage = computed((): string => route.path.slice(1))
 
 function handleClick(): void {
-  if (route.path.slice(1) === PAGE_TIMELINE) {
+  if (route.path.slice(1) === PageName.TIMELINE) {
     scrollToHour(null, true)
   }
 }

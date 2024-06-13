@@ -1,18 +1,13 @@
 import { generatePeriodSelectOptions } from './functions'
-import type { ButtonType, NavItem } from './types'
-import { IconName } from './enums'
+import type { NavItem } from './types'
+import { IconName, PageName } from './enums'
 
 export const LOCAL_STORAGE_KEY = 'time-tracker'
 
-export const PAGE_TIMELINE = 'timeline'
-export const PAGE_ACTIVITIES = 'activities'
-export const PAGE_PROGRESS = 'progress'
-export const PAGE_DAY_COMPLETE = 'day-complete'
-
 export const NAV_ITEMS: NavItem[] = [
-  { title: 'Timeline', action: PAGE_TIMELINE, icon: IconName.CLOCK },
-  { title: 'Activities', action: PAGE_ACTIVITIES, icon: IconName.LIST_BULLET },
-  { title: 'Progress', action: PAGE_PROGRESS, icon: IconName.CHART_BAR },
+  { title: 'Timeline', action: PageName.TIMELINE, icon: IconName.CLOCK },
+  { title: 'Activities', action: PageName.ACTIVITIES, icon: IconName.LIST_BULLET },
+  { title: 'Progress', action: PageName.PROGRESS, icon: IconName.CHART_BAR },
 ]
 export const MIN_HOUR = 0
 export const MAX_HOUR = 23
@@ -29,7 +24,3 @@ export const SUCCESS_BUTTON_TYPE = 'success'
 export const WARNING_BUTTON_TYPE = 'warning'
 export const NEUTRAL_BUTTON_TYPE = 'neutral'
 export const DANGER_BUTTON_TYPE = 'danger'
-
-export const BUTTON_TYPES: ButtonType[] = [
-  PRIMARY_BUTTON_TYPE, SUCCESS_BUTTON_TYPE, WARNING_BUTTON_TYPE, NEUTRAL_BUTTON_TYPE, DANGER_BUTTON_TYPE
-]

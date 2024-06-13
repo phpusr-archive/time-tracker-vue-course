@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="`/${PAGE_DAY_COMPLETE}`" class="fs-6">
+  <router-link :to="`/${PageName.DAY_COMPLETE}`" class="fs-6">
     <div v-if="dayComplete" class="d-flex align-items-center fs-6">
       Day complete
       <BaseIcon :name="IconName.CHECK_CIRCLE_SOLID" class="ms-2 text-success" style="height: 30px" />
@@ -13,9 +13,8 @@
 </template>
 <script setup lang="ts">
 import BaseIcon from './BaseIcon.vue'
-import { PAGE_DAY_COMPLETE } from '../constants'
 import { useTotalProgress } from '../composables/total-progress'
-import { IconName } from '../enums'
+import { IconName, PageName } from '../enums'
 
 const { percentage, dayComplete, colorClass } = useTotalProgress()
 </script>
