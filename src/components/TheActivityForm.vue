@@ -7,7 +7,7 @@
         v-model="name"
     >
     <BaseButton :disabled="!name.trim()">
-      <BaseIcon :name="ICON_PLUS" />
+      <BaseIcon :name="IconName.PLUS" />
     </BaseButton>
   </form>
 </template>
@@ -16,7 +16,7 @@ import { nextTick, ref } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseButton from './BaseButton.vue'
 import { useAppStore } from '../stores'
-import { ICON_PLUS } from '../services/icons'
+import { IconName } from '../enums'
 
 const store = useAppStore()
 

@@ -9,6 +9,7 @@ import {
   SUCCESS_BUTTON_TYPE,
   WARNING_BUTTON_TYPE
 } from './constants'
+import type { IconName } from './enums'
 
 export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS | typeof PAGE_DAY_COMPLETE
 
@@ -46,7 +47,7 @@ export interface TimelineItem {
 export interface NavItem {
   title: string
   action: PageName
-  icon: string
+  icon: IconName
 }
 
 export interface State {

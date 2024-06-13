@@ -2,18 +2,11 @@
   <component :is="ICONS[name]" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ICONS } from '../services/icons'
-import { isIconValid } from '../validators'
+import type { IconName } from '../enums.js'
 
-defineProps({
-  name: {
-    type: String,
-    required: true,
-    validator: isIconValid
-  }
-})
-
+defineProps<{ name: IconName }>()
 </script>
 
 <style scoped>

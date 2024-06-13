@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex">
     <BaseButton :type="NEUTRAL_BUTTON_TYPE" @click="select(null)">
-      <BaseIcon :name="ICON_X_MARK" />
+      <BaseIcon :name="IconName.X_MARK" />
     </BaseButton>
     <select
         class="ms-2 form-select text-truncate bg-gray-100 fs-3"
@@ -22,8 +22,8 @@ import BaseIcon from './BaseIcon.vue'
 import { isUndefinedOrNull } from '../validators'
 import { normalizeSelectValue } from '../functions'
 import { NEUTRAL_BUTTON_TYPE } from '../constants'
-import { ICON_X_MARK } from '../services/icons'
 import type { SelectOption } from '../types'
+import { IconName } from '../enums'
 
 const props = defineProps<{
   options: SelectOption<T>[]

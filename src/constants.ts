@@ -1,6 +1,6 @@
 import { generatePeriodSelectOptions } from './functions'
-import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from './services/icons'
 import type { ButtonType, NavItem } from './types'
+import { IconName } from './enums'
 
 export const LOCAL_STORAGE_KEY = 'time-tracker'
 
@@ -10,9 +10,9 @@ export const PAGE_PROGRESS = 'progress'
 export const PAGE_DAY_COMPLETE = 'day-complete'
 
 export const NAV_ITEMS: NavItem[] = [
-  { title: 'Timeline', action: PAGE_TIMELINE, icon: ICON_CLOCK },
-  { title: 'Activities', action: PAGE_ACTIVITIES, icon: ICON_LIST_BULLET },
-  { title: 'Progress', action: PAGE_PROGRESS, icon: ICON_CHART_BAR },
+  { title: 'Timeline', action: PAGE_TIMELINE, icon: IconName.CLOCK },
+  { title: 'Activities', action: PAGE_ACTIVITIES, icon: IconName.LIST_BULLET },
+  { title: 'Progress', action: PAGE_PROGRESS, icon: IconName.CHART_BAR },
 ]
 export const MIN_HOUR = 0
 export const MAX_HOUR = 23
