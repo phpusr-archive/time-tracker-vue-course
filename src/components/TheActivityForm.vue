@@ -11,7 +11,7 @@
     </BaseButton>
   </form>
 </template>
-<script setup>
+<script setup lang="ts">
 import { nextTick, ref } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseButton from './BaseButton.vue'
@@ -20,9 +20,9 @@ import { ICON_PLUS } from '../services/icons'
 
 const store = useAppStore()
 
-const name = ref('')
+const name = ref<string>('')
 
-async function submit() {
+async function submit(): Promise<void> {
   store.addActivity(name.value)
   name.value = ''
   await nextTick()

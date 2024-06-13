@@ -10,7 +10,7 @@
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import NavItem from './NavItem.vue'
 import { NAV_ITEMS } from '../constants'
 </script>

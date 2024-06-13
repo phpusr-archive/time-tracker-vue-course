@@ -4,7 +4,7 @@
     <h1 class="ms-2 text-nowrap m-0">TimeTracker</h1>
   </a>
 </template>
-<script setup>
+<script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import BaseIcon from './BaseIcon.vue'
 import { PAGE_TIMELINE } from '../constants'
@@ -14,7 +14,7 @@ import { scrollToHour } from '../services/timeline-items'
 const router = useRouter()
 const route = useRoute()
 
-function handleClick() {
+function handleClick(): void {
   if (route.path.slice(1) === PAGE_TIMELINE) {
     scrollToHour(null, true)
   } else {

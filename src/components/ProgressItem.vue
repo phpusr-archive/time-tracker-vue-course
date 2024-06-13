@@ -11,17 +11,11 @@
   </li>
 </template>
 
-<script setup>
-import { isActivityValid } from '../validators'
+<script setup lang="ts">
 import { useProgress } from '../composables/progress'
+import type { Activity } from '../types'
 
-const { activity } = defineProps({
-  activity: {
-    required: true,
-    type: Object,
-    validator: isActivityValid
-  }
-})
+const { activity } = defineProps<{ activity: Activity }>()
 
 const { percentage, timeProgress, colorClass, progressWidth } = useProgress(activity)
 </script>

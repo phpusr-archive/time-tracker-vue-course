@@ -5,27 +5,21 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { formatSecondsWithSign } from '../functions'
-import { isActivityValid } from '../validators'
 import { useAppStore } from '../stores'
+import type { Activity } from '../types'
 
-const { activity } = defineProps({
-  activity: {
-    required: true,
-    type: Object,
-    validator: isActivityValid
-  }
-})
+const { activity } = defineProps<{ activity: Activity }>()
 
 const store = useAppStore()
 
-const colorClasses = computed(() => {
+const colorClasses = computed((): string => {
   return remainingSeconds.value >= 0 ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
 })
 
-const remainingSeconds = computed(() => {
+const remainingSeconds = computed((): number => {
   return store.calculateTrackedActivitySeconds(activity.id) - activity.secondsToComplete
 })
 </script>
