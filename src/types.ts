@@ -13,3 +13,43 @@ import {
 export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS | typeof PAGE_DAY_COMPLETE
 
 export type ButtonType = typeof PRIMARY_BUTTON_TYPE | typeof SUCCESS_BUTTON_TYPE | typeof WARNING_BUTTON_TYPE | typeof NEUTRAL_BUTTON_TYPE | typeof DANGER_BUTTON_TYPE
+
+export interface AppState {
+  activities: Activity[]
+  timelineItems: TimelineItem[]
+}
+
+export interface Activity {
+  id: string
+  name: string
+  secondsToComplete: number
+}
+
+export interface ActivitySelectOption {
+  label: string
+  value: string
+}
+
+export interface PeriodSelectOption {
+  label: string
+  value: number
+}
+
+export interface TimelineItem {
+  hour: number
+  activityId: string | null
+  activitySeconds: number
+  stopwatch: number | null
+}
+
+export interface NavItem {
+  title: string
+  action: PageName
+  icon: any
+}
+
+export interface State {
+  timelineItems?: TimelineItem[]
+  activities?: Activity[]
+  lastActiveAt?: Date
+}

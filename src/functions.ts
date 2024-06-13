@@ -1,6 +1,7 @@
 import { MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants'
 import { isUndefinedOrNull } from './validators'
-import { PeriodSelectOption, ProgressColorClass } from './models'
+import type { PeriodSelectOption } from './types'
+import { ProgressColorClass } from './enums'
 
 export function generatePeriodSelectOptions(): PeriodSelectOption[] {
   const periodInMinutes = [15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480]
