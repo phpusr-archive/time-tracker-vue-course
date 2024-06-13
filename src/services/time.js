@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { MILLISECONDS_IN_SECOND, SECONDS_IN_DAY, SECONDS_IN_HOUR } from './constants'
+import { MILLISECONDS_IN_SECOND, SECONDS_IN_DAY, SECONDS_IN_HOUR } from '../constants'
 
 const TEST_SPEED_UP = 1
 
@@ -15,6 +15,7 @@ export function endOfHour(date) {
 }
 
 export function today() {
+  // noinspection UnnecessaryLocalVariableJS
   const date = new Date()
   //date.setHours(date.getHours() + 1)
   return date

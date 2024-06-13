@@ -41,7 +41,7 @@ import { isTimelineItemValid } from '../validators'
 import { useAppStore } from '../stores'
 import { formatSeconds } from '../functions'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../services/icons'
-import { now } from '../time'
+import { now } from '../services/time'
 
 const { timelineItem } = defineProps({
   timelineItem: {

@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { now } from '../time'
+import { now } from './time'
 
 export const timelineItemRefs = ref([])
 

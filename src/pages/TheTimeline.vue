@@ -18,7 +18,7 @@ import TimelineItem from '../components/TimelineItem.vue'
 import TheTimelineIndicator from '../components/TheTimelineIndicator.vue'
 import { useAppStore } from '../stores'
 import { scrollToHour, timelineItemRefs } from '../services/timeline-items'
-import { startCurrentDateTimer, stopCurrentDateTimer } from '../time'
+import { startCurrentDateTimer, stopCurrentDateTimer } from '../services/time'
 
 const store = useAppStore()
 

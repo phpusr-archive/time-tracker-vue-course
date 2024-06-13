@@ -8,7 +8,7 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import { secondsSinceMidnightInPercentage } from '../time'
+import { secondsSinceMidnightInPercentage } from '../services/time'
 
 const indicatorRef = ref()
 

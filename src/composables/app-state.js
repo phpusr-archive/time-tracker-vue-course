@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useAppStore } from '../stores'
-import * as storage from '../storage'
-import { endOfHour, isToday, today } from '../time'
+import * as storage from '../services/storage'
+import { endOfHour, isToday, today } from '../services/time'
 import { MILLISECONDS_IN_SECOND } from '../constants'
 
 export function useAppState() {
