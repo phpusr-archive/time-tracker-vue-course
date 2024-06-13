@@ -35,7 +35,7 @@ export function today(): Date {
   return date
 }
 
-let currentDateTimer: number|null = null
+let currentDateTimer: NodeJS.Timeout | null = null
 
 export function startCurrentDateTimer(): void {
   currentDateTimer = setInterval((): void => {

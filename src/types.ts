@@ -26,7 +26,7 @@ export interface TimelineItem {
   hour: Hour
   activityId: Activity['id'] | null
   activitySeconds: number
-  stopwatch: number | null
+  stopwatch: NodeJS.Timeout | null
 }
 
 export interface NavItem {
