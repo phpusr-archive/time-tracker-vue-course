@@ -14,6 +14,10 @@ export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PA
 
 export type ButtonType = typeof PRIMARY_BUTTON_TYPE | typeof SUCCESS_BUTTON_TYPE | typeof WARNING_BUTTON_TYPE | typeof NEUTRAL_BUTTON_TYPE | typeof DANGER_BUTTON_TYPE
 
+export type ActivitySelectOption = SelectOption
+
+export type PeriodSelectOption = SelectOption<number>
+
 export interface AppState {
   activities: Activity[]
   timelineItems: TimelineItem[]
@@ -25,19 +29,14 @@ export interface Activity {
   secondsToComplete: number
 }
 
-export interface ActivitySelectOption {
+export interface SelectOption<T = string> {
   label: string
-  value: string
-}
-
-export interface PeriodSelectOption {
-  label: string
-  value: number
+  value: T
 }
 
 export interface TimelineItem {
   hour: number
-  activityId: string | null
+  activityId: Activity['id'] | null
   activitySeconds: number
   stopwatch: number | null
 }
@@ -45,7 +44,7 @@ export interface TimelineItem {
 export interface NavItem {
   title: string
   action: PageName
-  icon: any
+  icon: string
 }
 
 export interface State {
