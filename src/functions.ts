@@ -1,5 +1,4 @@
 import { MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from './constants'
-import { isUndefinedOrNull } from './validators'
 import type { PeriodSelectOption } from './types'
 import { ProgressColorClass } from './enums'
 
@@ -22,7 +21,7 @@ export function id(): string {
 }
 
 export function normalizeSelectValue(value: any): any {
-  return isUndefinedOrNull(value) || isNaN(value) ? value : +value
+  return value === null || isNaN(value) ? value : +value
 }
 
 export function formatSecondsWithSign(seconds: number): string {
