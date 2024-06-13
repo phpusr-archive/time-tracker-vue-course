@@ -2,25 +2,19 @@
   <a href="#" :class="classes" @click.prevent="scrollToHour(hour, true)">{{ formattedHour }}</a>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
-import { isHourValid } from '../validators'
 import { scrollToHour } from '../services/timeline-items'
 import { now } from '../services/time'
+import type { Hour } from '../types'
 
-const props = defineProps({
-  hour: {
-    required: true,
-    type: Number,
-    validator: isHourValid
-  }
-})
+const { hour } = defineProps<{ hour: Hour }>()
 
-const formattedHour = `${props.hour.toString().padStart(2, '0')}:00`
+const formattedHour = `${hour.toString().padStart(2, '0')}:00`
 
-const classes = computed(() => [
+const classes = computed<string[]>(() => [
   'hours rounded px-2 font-monospace fs-3',
-  props.hour === now.value.getHours() ? 'bg-purple-900 text-white' : 'bg-gray-100 text-secondary'
+  hour === now.value.getHours() ? 'bg-purple-900 text-white' : 'bg-gray-100 text-secondary'
 ])
 
 </script>

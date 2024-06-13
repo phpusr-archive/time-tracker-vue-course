@@ -14,6 +14,8 @@ export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PA
 
 export type ButtonType = typeof PRIMARY_BUTTON_TYPE | typeof SUCCESS_BUTTON_TYPE | typeof WARNING_BUTTON_TYPE | typeof NEUTRAL_BUTTON_TYPE | typeof DANGER_BUTTON_TYPE
 
+export type Hour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
+
 export type ActivitySelectOption = SelectOption
 
 export type PeriodSelectOption = SelectOption<number>
@@ -35,7 +37,7 @@ export interface SelectOption<T = string> {
 }
 
 export interface TimelineItem {
-  hour: number
+  hour: Hour
   activityId: Activity['id'] | null
   activitySeconds: number
   stopwatch: number | null

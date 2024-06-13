@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { id } from '../functions'
 import { MAX_HOUR, MIN_HOUR, SECONDS_IN_HOUR } from '../constants'
 import { now } from '../services/time'
-import type { Activity, ActivitySelectOption, AppState, TimelineItem } from '../types'
+import type { Activity, ActivitySelectOption, AppState, Hour, TimelineItem } from '../types'
 
 const activities: Activity[] = []
 
@@ -136,7 +136,7 @@ function generateActivities(): Activity[] {
 }
 
 function generateTimelineItems(activities: Activity[]): TimelineItem[] {
-  const timelineItems = []
+  const timelineItems: TimelineItem[] = []
   for (let hour = MIN_HOUR; hour <= MAX_HOUR; hour++) {
     const randomActivityIndex = Math.round(Math.random() * (activities.length - 1))
     //const randomActivitySeconds = randomActivityIndex === activities.length ? 0 : Math.round(Math.random() * 7200)
@@ -149,7 +149,7 @@ function generateTimelineItems(activities: Activity[]): TimelineItem[] {
     const randomActivitySeconds = activityId === null ? 0 : Math.round(Math.random() * 1000)
 
     timelineItems.push({
-      hour,
+      hour: hour as Hour,
       activityId,
       activitySeconds: randomActivitySeconds,
       stopwatch: null
